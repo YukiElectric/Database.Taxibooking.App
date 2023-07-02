@@ -82,8 +82,7 @@ public class UserDetailController implements Initializable {
 
     @FXML
     void goBack(ActionEvent event) {
-        Stage stage = (Stage) timeView.getScene().getWindow();
-        stage.close();
+        ((Stage) timeView.getScene().getWindow()).close();
     }
 
     @Override
