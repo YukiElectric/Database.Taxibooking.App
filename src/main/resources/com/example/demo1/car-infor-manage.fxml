@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="titleView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="523.0" prefWidth="404.0" style="-fx-background-color: white; -fx-border-color: black;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.controller.CarInforManageController">
+   <children>
+      <Label layoutX="131.0" layoutY="9.0" text="Thông tin xe" textFill="#1de9b6">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Label>
+      <VBox layoutX="14.0" layoutY="66.0" prefHeight="486.0" prefWidth="376.0" spacing="40.0">
+         <children>
+            <JFXTextField fx:id="brandView" focusColor="#0097a7" prefHeight="38.0" prefWidth="291.0" promptText="Tên xe">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXTextField>
+            <AnchorPane>
+               <children>
+                  <Label layoutY="2.0" text="Loại xe:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <JFXRadioButton fx:id="car4" layoutX="94.0" layoutY="-14.0" selected="true" text="Xe 4 chỗ">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="gr" />
+                     </toggleGroup>
+                  </JFXRadioButton>
+                  <JFXRadioButton fx:id="carV4" layoutX="222.0" layoutY="-14.0" text="Vinfast 4 chỗ" toggleGroup="$gr">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXRadioButton>
+                  <JFXRadioButton fx:id="car7" layoutX="92.0" layoutY="19.0" text="Xe  7 chỗ" toggleGroup="$gr">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXRadioButton>
+                  <JFXRadioButton fx:id="car16" layoutX="222.0" layoutY="19.0" text="Xe 16 chỗ" toggleGroup="$gr">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXRadioButton>
+               </children>
+            </AnchorPane>
+            <JFXTextField fx:id="licenseView" focusColor="#0097a7" layoutX="10.0" layoutY="10.0" prefHeight="38.0" prefWidth="291.0" promptText="Biển số xe">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="maintenanceView" focusColor="#0097a7" labelFloat="true" layoutX="10.0" layoutY="262.0" prefHeight="38.0" prefWidth="291.0" promptText="Số lần bảo dưỡng" unFocusColor="BLACK">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="driverIDView" focusColor="#0097a7" labelFloat="true" prefHeight="38.0" prefWidth="291.0" promptText="Mã tài xế">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXTextField>
+         </children>
+      </VBox>
+      <JFXButton layoutX="52.0" layoutY="439.0" onAction="#saveAct" prefHeight="63.0" prefWidth="126.0" style="-fx-border-color: #1de9b6; -fx-border-radius: 30;" text="Lưu" textFill="#1de9b6">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="216.0" layoutY="439.0" onAction="#deleteAct" prefHeight="63.0" prefWidth="138.0" style="-fx-border-color: #f57c00; -fx-border-radius: 39;" text="Xóa" textFill="#f57c00">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

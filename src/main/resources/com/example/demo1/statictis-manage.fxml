@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="818.0" prefWidth="685.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.controller.StatictisManageController">
+   <children>
+      <VBox layoutX="61.0" layoutY="15.0" spacing="30.0">
+         <children>
+            <HBox spacing="20.0">
+               <children>
+                  <AnchorPane prefHeight="73.0" prefWidth="179.0" style="-fx-background-color: #0097a7; -fx-background-radius: 10;">
+                     <effect>
+                        <DropShadow height="10.0" radius="2.0" spread="0.32" width="0.0" />
+                     </effect>
+                     <children>
+                        <FontAwesomeIconView fill="WHITE" glyphName="USER" layoutX="14.0" layoutY="54.0" size="50" />
+                        <Label fx:id="userSet" alignment="CENTER" contentDisplay="CENTER" layoutX="88.0" layoutY="8.0" prefHeight="35.0" prefWidth="52.0" text="250" textAlignment="CENTER" textFill="#f8f8f8">
+                           <font>
+                              <Font name="System Bold" size="30.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="55.0" layoutY="45.0" text="Tài khoản người dùng" textFill="WHITE" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="73.0" prefWidth="179.0" style="-fx-background-color: #0097a7; -fx-background-radius: 10;">
+                     <effect>
+                        <DropShadow height="10.0" radius="2.0" spread="0.32" width="0.0" />
+                     </effect>
+                     <children>
+                        <FontAwesomeIconView fill="WHITE" glyphName="DRIVERS_LICENSE_ALT" layoutX="14.0" layoutY="54.0" size="50" />
+                        <Label fx:id="driverSet" alignment="CENTER" contentDisplay="CENTER" layoutX="88.0" layoutY="8.0" prefHeight="35.0" prefWidth="52.0" text="500" textAlignment="CENTER" textFill="#f8f8f8">
+                           <font>
+                              <Font name="System Bold" size="30.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="99.0" layoutY="44.0" text="Tài xế" textFill="WHITE" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="73.0" prefWidth="179.0" style="-fx-background-color: #0097a7; -fx-background-radius: 10;">
+                     <effect>
+                        <DropShadow height="10.0" radius="2.0" spread="0.32" width="0.0" />
+                     </effect>
+                     <children>
+                        <FontAwesomeIconView fill="WHITE" glyphName="GROUP" layoutX="14.0" layoutY="54.0" size="50" />
+                        <Label fx:id="employeeSet" alignment="CENTER" contentDisplay="CENTER" layoutX="88.0" layoutY="8.0" prefHeight="35.0" prefWidth="52.0" text="500" textAlignment="CENTER" textFill="#f8f8f8">
+                           <font>
+                              <Font name="System Bold" size="30.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="86.0" layoutY="44.0" text="Nhân viên" textFill="WHITE" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+            <HBox spacing="20.0">
+               <children>
+                  <AnchorPane prefHeight="73.0" prefWidth="179.0" style="-fx-background-color: #0097a7; -fx-background-radius: 10;">
+                     <effect>
+                        <DropShadow height="10.0" radius="2.0" spread="0.32" width="0.0" />
+                     </effect>
+                     <children>
+                        <FontAwesomeIconView fill="WHITE" glyphName="CAR" layoutX="9.0" layoutY="54.0" size="50" />
+                        <Label fx:id="shipNumberSet" alignment="CENTER" contentDisplay="CENTER" layoutX="73.0" layoutY="8.0" prefHeight="45.0" prefWidth="89.0" text="11500" textAlignment="CENTER" textFill="#f8f8f8">
+                           <font>
+                              <Font name="System Bold" size="30.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="85.0" layoutY="45.0" text="Chuyến đi" textFill="WHITE" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="73.0" prefWidth="179.0" style="-fx-background-color: #0097a7; -fx-background-radius: 10;">
+                     <effect>
+                        <DropShadow height="10.0" radius="2.0" spread="0.32" width="0.0" />
+                     </effect>
+                     <children>
+                        <Label fx:id="completeShipNumberSet" alignment="CENTER" contentDisplay="CENTER" layoutX="73.0" layoutY="8.0" prefHeight="45.0" prefWidth="89.0" text="10000" textAlignment="CENTER" textFill="#f8f8f8">
+                           <font>
+                              <Font name="System Bold" size="30.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="53.0" layoutY="45.0" text="Chuyến đi hoàng thành" textFill="WHITE" />
+                        <FontAwesomeIconView fill="WHITE" glyphName="THUMBS_ALT_UP" layoutX="10.0" layoutY="54.0" size="50" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="73.0" prefWidth="179.0" style="-fx-background-color: #0097a7; -fx-background-radius: 10;">
+                     <effect>
+                        <DropShadow height="10.0" radius="2.0" spread="0.32" width="0.0" />
+                     </effect>
+                     <children>
+                        <Label fx:id="cancelShipNumberSet" alignment="CENTER" contentDisplay="CENTER" layoutX="74.0" layoutY="8.0" prefHeight="45.0" prefWidth="77.0" text="1500" textAlignment="CENTER" textFill="#f8f8f8">
+                           <font>
+                              <Font name="System Bold" size="30.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="68.0" layoutY="44.0" text="Chuyến đi bị hủy" textFill="WHITE" />
+                        <FontAwesomeIconView fill="WHITE" glyphName="THUMBS_ALT_DOWN" layoutX="12.0" layoutY="54.0" size="50" text="" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+            <HBox prefHeight="28.0" prefWidth="344.0" spacing="23.0">
+               <children>
+                  <ComboBox fx:id="selectSet" onAction="#setCarNumber" prefHeight="28.0" prefWidth="177.0" styleClass="material-combo-box">
+                     <HBox.margin>
+                        <Insets top="17.0" />
+                     </HBox.margin>
+                  </ComboBox>
+                  <AnchorPane prefHeight="73.0" prefWidth="179.0" style="-fx-background-color: #0097a7; -fx-background-radius: 10;">
+                     <effect>
+                        <DropShadow height="10.0" radius="2.0" spread="0.32" width="0.0" />
+                     </effect>
+                     <children>
+                        <Label fx:id="carSet" alignment="CENTER" contentDisplay="CENTER" layoutX="85.0" layoutY="8.0" prefHeight="45.0" prefWidth="57.0" text="500" textAlignment="CENTER" textFill="#f8f8f8">
+                           <font>
+                              <Font name="System Bold" size="30.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="105.0" layoutY="45.0" text="Xe" textFill="WHITE" />
+                        <FontAwesomeIconView fill="WHITE" glyphName="TAXI" layoutX="15.0" layoutY="51.0" size="50" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <Label text="Thống kê tài chính gần đây">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <TableView fx:id="tableView" prefHeight="463.0" prefWidth="513.0">
+               <columns>
+                  <TableColumn fx:id="date" prefWidth="106.6666259765625" text="Thời gian" />
+                  <TableColumn fx:id="supplementary" prefWidth="155.3333282470703" text="Phụ phí" />
+                  <TableColumn fx:id="salary" prefWidth="138.0" text="Lương nhân viên" />
+                  <TableColumn fx:id="earning" prefWidth="176.66659545898438" text="Doanh thu" />
+               </columns>
+            </TableView>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

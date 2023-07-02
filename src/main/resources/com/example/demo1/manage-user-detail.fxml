@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="titleView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="516.0" prefWidth="438.0" style="-fx-border-color: black; -fx-background-color: white;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.controller.ManageUserDetailController">
+   <children>
+      <Line endX="336.9999694824219" endY="-1.1444091796875E-5" layoutX="101.0" layoutY="59.0" startX="-100.0" stroke="#009688" />
+      <Label layoutX="14.0" layoutY="14.0" text="Thông tin người dùng">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="userView" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="239.0" layoutY="9.0" prefHeight="17.0" prefWidth="189.0" text="Tài khoản: user" />
+      <Label fx:id="passView" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="258.0" layoutY="35.0" prefHeight="17.0" prefWidth="170.0" text="Mật khẩu: user" />
+      <ImageView fx:id="img" fitHeight="170.0" fitWidth="170.0" layoutX="12.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/bgr.png" />
+         </image>
+      </ImageView>
+      <Line endX="337.9999694824219" endY="1.52587890625E-5" layoutX="100.0" layoutY="234.0" startX="-100.0" stroke="#009688" />
+      <Label fx:id="customerNameView" layoutX="198.0" layoutY="77.0" text="Tên người dùng">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="customerPhoneView" layoutX="200.0" layoutY="142.0" text="0337726028" />
+      <Label layoutX="18.0" layoutY="242.0" prefHeight="17.0" prefWidth="189.0" text="Thông tin các chuyến đi" textFill="#b5b5b5">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <FontAwesomeIconView fill="#ff8800" glyphName="ARROW_CIRCLE_ALT_UP" layoutX="21.0" layoutY="311.0" selectionFill="BLACK" size="50" />
+      <Label layoutX="73.0" layoutY="273.0" text="Tổng số đơn">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="countRequest" layoutX="107.0" layoutY="293.0" text="17" />
+      <FontAwesomeIconView fill="#009688" glyphName="DOT_CIRCLE_ALT" layoutX="22.0" layoutY="359.0" size="50" />
+      <Label layoutX="71.0" layoutY="322.0" text="Tổng quãng đường đã đi">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="sumDistanceView" layoutX="96.0" layoutY="341.0" text="147 km" />
+      <Line endX="336.9999694824219" endY="3.0517578125E-5" layoutX="101.0" layoutY="369.0" startX="-100.0" stroke="#009688" />
+      <Label layoutX="21.0" layoutY="376.0" text="Tổng chi tiêu" textFill="#b5b5b5">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="priceView" layoutX="162.0" layoutY="376.0" text="100.000.000.000">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="287.0" layoutY="370.0" text="VNĐ">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Button layoutX="165.0" layoutY="436.0" mnemonicParsing="false" onAction="#goBack" styleClass="btn" text="Xác nhận">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Label fx:id="customerGender" layoutX="202.0" layoutY="120.0" text="Nam" />
+      <Label fx:id="customerDate" layoutX="244.0" layoutY="120.0" text="07/02/2003" />
+      <Label fx:id="customerEmail" layoutX="200.0" layoutY="161.0" text="phamthanhlap2203.hha@gmail.com" />
+      <Label layoutX="235.0" layoutY="119.0" text="|" />
+      <Label fx:id="customerIdView" layoutX="201.0" layoutY="102.0" text="Mã khách hàng: 1" />
+   </children>
+</AnchorPane>

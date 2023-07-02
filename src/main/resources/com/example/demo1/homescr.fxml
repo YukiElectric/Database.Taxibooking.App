@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="titleView" prefHeight="876.0" prefWidth="653.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.controller.HomeScrController">
+   <children>
+      <AnchorPane prefHeight="57.0" prefWidth="683.0" style="-fx-background-color: #009688;">
+         <effect>
+            <DropShadow blurType="GAUSSIAN" height="20.0" radius="4.5" spread="0.32" width="0.0" />
+         </effect>
+         <children>
+            <HBox layoutX="165.0" layoutY="18.0" prefHeight="39.0" prefWidth="488.0" spacing="20.0">
+               <children>
+                  <ToggleButton fx:id="home" mnemonicParsing="false" selected="true" styleClass="tg" stylesheets="@style.css" text="Trang chủ" textOverrun="CLIP">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="gr" />
+                     </toggleGroup>
+                  </ToggleButton>
+                  <ToggleButton fx:id="act" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" styleClass="tg" stylesheets="@style.css" text="Hoạt động" toggleGroup="$gr">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </ToggleButton>
+                  <ToggleButton fx:id="vou" layoutX="83.0" layoutY="10.0" mnemonicParsing="false" styleClass="tg" stylesheets="@style.css" text="Ưu đãi" toggleGroup="$gr">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </ToggleButton>
+                  <ToggleButton fx:id="acc" layoutX="155.0" layoutY="10.0" mnemonicParsing="false" styleClass="tg" stylesheets="@style.css" text="Tài khoản" toggleGroup="$gr">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </ToggleButton>
+                  <FontAwesomeIconView fill="WHITE" glyphName="SEARCH" size="30">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </FontAwesomeIconView>
+               </children>
+            </HBox>
+            <FontAwesomeIconView fill="WHITE" glyphName="BARS" layoutX="21.0" layoutY="36.0" size="25" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="scr" layoutY="57.0" prefHeight="830.0" prefWidth="683.0" />
+   </children>
+</AnchorPane>

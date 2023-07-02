@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="818.0" prefWidth="683.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.controller.DriverHistoryController">
+   <children>
+      <VBox layoutX="28.0" layoutY="44.0" prefHeight="759.0" prefWidth="634.0" spacing="40.0">
+         <children>
+            <TableView fx:id="tableView" prefHeight="759.0" prefWidth="667.0">
+               <columns>
+                  <TableColumn fx:id="idRequestTxt" prefWidth="105.3333740234375" text="Mã chuyến đi" />
+                  <TableColumn fx:id="departureTxt" prefWidth="130.0" text="Điểm đi" />
+                  <TableColumn fx:id="arrivalTxt" prefWidth="89.33331298828125" text="Điểm đến" />
+                  <TableColumn fx:id="timeTxt" prefWidth="114.0" text="Thời gian" />
+                  <TableColumn fx:id="priceTxt" prefWidth="79.33328247070312" text="Giá tiền" />
+                  <TableColumn fx:id="statusTxt" prefWidth="104.0" text="Tình trạng" />
+               </columns>
+            </TableView>
+         </children>
+      </VBox>
+      <Button layoutX="616.0" layoutY="12.0" mnemonicParsing="false" onAction="#detailOrder" styleClass="btn" text="Chi tiết" />
+   </children>
+</AnchorPane>

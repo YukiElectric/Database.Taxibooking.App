@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="titleView" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.controller.LoginController">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="455.0" prefWidth="404.0" style="-fx-background-radius: 30; -fx-background-color: white; -fx-border-radius: 30;">
+         <children>
+            <Label layoutX="131.0" layoutY="54.0" text="Đăng Nhập" textFill="#1de9b6">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="userView" focusColor="#0097a7" labelFloat="true" layoutX="86.0" layoutY="135.0" prefHeight="38.0" prefWidth="244.0" promptText="Tài khoản" text="manager">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXPasswordField fx:id="passView" focusColor="#0097a7" labelFloat="true" layoutX="86.0" layoutY="214.0" prefHeight="29.0" prefWidth="244.0" promptText="Mật khẩu" text="manager">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXPasswordField>
+            <FontAwesomeIconView fill="#616161" glyphName="USER_CIRCLE_ALT" layoutX="25.0" layoutY="174.0" selectionFill="#984343" size="32" />
+            <FontAwesomeIconView fill="#616161" glyphName="LOCK" layoutX="32.0" layoutY="250.0" selectionFill="#984343" size="32" />
+            <Label layoutX="229.0" layoutY="349.0" onMouseClicked="#forgot" text="Quên mật khẩu" textFill="#616161" underline="true">
+               <font>
+                  <Font name="System Italic" size="14.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="btn" layoutX="219.0" layoutY="391.0" onAction="#login" prefHeight="38.0" prefWidth="116.0" style="-fx-background-color: #1de9b6; -fx-background-radius: 30;" text="Đăng nhập" textFill="WHITE">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="75.0" layoutY="391.0" onAction="#sign" prefHeight="38.0" prefWidth="116.0" style="-fx-border-color: #1de9b6; -fx-border-radius: 30;" text="Đăng ký" textFill="#1de9b6">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </JFXButton>
+            <Label fx:id="capcha" layoutX="31.0" layoutY="287.0" prefHeight="47.0" prefWidth="88.0">
+               <font>
+                  <Font name="Kristen ITC" size="30.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="confrim" alignment="CENTER" focusColor="#0097a7" layoutX="208.0" layoutY="291.0" prefHeight="38.0" prefWidth="116.0" promptText="Mã xác nhận">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXTextField>
+            <FontAwesomeIconView glyphName="TIMES" layoutX="373.0" layoutY="32.0" onMouseClicked="#closeApp" size="25" />
+            <FontAwesomeIconView glyphName="WINDOW_MINIMIZE" layoutX="328.0" layoutY="31.0" onMouseClicked="#minius" size="25" />
+            <JFXButton layoutX="114.0" layoutY="299.0" onAction="#reset" text=" ">
+               <graphic>
+                  <FontAwesomeIconView glyphName="UNDO" size="20" text="" />
+               </graphic>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

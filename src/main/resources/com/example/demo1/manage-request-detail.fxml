@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="titleView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="681.0" prefWidth="438.0" style="-fx-border-color: black; -fx-background-color: white;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.controller.ManageRequestDetailController">
+   <children>
+      <Line endX="336.9999694824219" endY="-1.1444091796875E-5" layoutX="101.0" layoutY="59.0" startX="-100.0" stroke="#009688" />
+      <Label fx:id="statusView" layoutX="14.0" layoutY="14.0" text="Đơn đã bị hủy">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="timeView" layoutX="320.0" layoutY="9.0" text="16:27:30 27/06/2023" />
+      <Label fx:id="requestIdView" layoutX="342.0" layoutY="35.0" text="Đơn hàng r0001" />
+      <ImageView fx:id="imgCustomer" fitHeight="150.0" fitWidth="150.0" layoutX="23.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/bgr.png" />
+         </image>
+      </ImageView>
+      <Line endX="337.9999694824219" endY="1.52587890625E-5" layoutX="101.0" layoutY="402.0" startX="-100.0" stroke="#009688" />
+      <Label fx:id="customerNameView" layoutX="198.0" layoutY="93.0" text="Tên khách hàng">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="customerPhoneView" layoutX="200.0" layoutY="137.0" text="0337726028" />
+      <FontAwesomeIconView fill="#ff8800" glyphName="ARROW_CIRCLE_ALT_UP" layoutX="21.0" layoutY="477.0" selectionFill="BLACK" size="50" />
+      <Label layoutX="18.0" layoutY="408.0" prefHeight="17.0" prefWidth="189.0" text="Thông tin chuyến đi" textFill="#b5b5b5">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="73.0" layoutY="439.0" text="Điểm đi">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="departureView" layoutX="74.0" layoutY="461.0" text="254/101/17 số nhà 24 đình làng Mai Động" />
+      <FontAwesomeIconView fill="#b5b5b5" glyphName="ELLIPSIS_V" layoutX="40.0" layoutY="503.0" size="25" text="" />
+      <FontAwesomeIconView fill="#009688" glyphName="DOT_CIRCLE_ALT" layoutX="22.0" layoutY="545.0" size="50" />
+      <Label layoutX="71.0" layoutY="508.0" text="Điểm đến *">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="arrivalView" layoutX="74.0" layoutY="527.0" text="254/101/17 số nhà 24 đình làng Mai Động" />
+      <Label fx:id="distanceView" layoutX="149.0" layoutY="508.0" text="100 km">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Line endX="336.9999694824219" endY="3.0517578125E-5" layoutX="101.0" layoutY="559.0" startX="-100.0" stroke="#009688" />
+      <Label layoutX="21.0" layoutY="566.0" text="Thành tiền" textFill="#b5b5b5">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="priceView" layoutX="162.0" layoutY="566.0" text="100.000.000.000">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="287.0" layoutY="560.0" text="VNĐ">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Button layoutX="165.0" layoutY="622.0" mnemonicParsing="false" onAction="#goBack" styleClass="btn" text="Xác nhận">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Line endX="337.9999694824219" endY="1.52587890625E-5" layoutX="99.0" layoutY="230.0" startX="-100.0" stroke="#009688" />
+      <ImageView fx:id="imgDriver" fitHeight="150.0" fitWidth="150.0" layoutX="26.0" layoutY="241.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/bgr.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="customerIDView" layoutX="201.0" layoutY="117.0" text="Mã khách hàng: 1" />
+      <Label fx:id="driverNameView" layoutX="198.0" layoutY="279.0" text="Tên tài xế">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="brandView" layoutX="200.0" layoutY="323.0" text="Kia morning gôgo" />
+      <Label fx:id="driverIDView" layoutX="201.0" layoutY="303.0" text="Mã tài xế: 3" />
+      <Label layoutX="270.0" layoutY="301.0" text="|" />
+      <Label fx:id="carIDView" layoutX="285.0" layoutY="303.0" text="Mã xe: c0001" />
+   </children>
+</AnchorPane>

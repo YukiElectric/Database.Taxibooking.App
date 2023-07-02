@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="titleView" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.controller.ForgotController">
+   <children>
+      <HBox>
+         <children>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="367.0" prefWidth="404.0" style="-fx-background-radius: 30; -fx-background-color: white; -fx-border-radius: 30;" stylesheets="@style.css">
+               <children>
+                  <Label layoutX="111.0" layoutY="72.0" text="Quên mật khẩu" textFill="#1de9b6">
+                     <font>
+                        <Font name="System Bold" size="26.0" />
+                     </font>
+                  </Label>
+                  <HBox fx:id="scr" layoutX="20.0" layoutY="144.0" spacing="40.0">
+                     <children>
+                        <VBox alignment="CENTER" spacing="40.0">
+                           <children>
+                              <HBox spacing="20.0">
+                                 <children>
+                                    <FontAwesomeIconView fill="#616161" glyphName="ADDRESS_CARD_ALT" selectionFill="#984343" size="32" />
+                                    <JFXTextField fx:id="email" focusColor="#0097a7" labelFloat="true" prefHeight="38.0" prefWidth="244.0" promptText="Email / SĐT">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <JFXButton onAction="#send" text=" ">
+                                       <graphic>
+                                          <FontAwesomeIconView fill="#616161" glyphName="SEND_ALT" selectionFill="#984343" size="20" />
+                                       </graphic>
+                                       <HBox.margin>
+                                          <Insets top="10.0" />
+                                       </HBox.margin>
+                                    </JFXButton>
+                                 </children>
+                              </HBox>
+                              <HBox spacing="20.0">
+                                 <children>
+                                    <FontAwesomeIconView fill="#616161" glyphName="CODE" selectionFill="#984343" size="32" />
+                                    <JFXPasswordField fx:id="code" focusColor="#0097a7" labelFloat="true" prefHeight="29.0" prefWidth="244.0" promptText="Mã xác nhận">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </JFXPasswordField>
+                                 </children>
+                              </HBox>
+                              <JFXButton onAction="#confirm" prefHeight="38.0" prefWidth="116.0" style="-fx-background-color: #1de9b6; -fx-background-radius: 30;" text="Xác nhận" textFill="WHITE">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </JFXButton>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" spacing="40.0">
+                           <children>
+                              <JFXPasswordField fx:id="newpass" focusColor="#0097a7" labelFloat="true" prefHeight="36.0" prefWidth="291.0" promptText="Mật khẩu mới">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </JFXPasswordField>
+                              <JFXPasswordField fx:id="repass" focusColor="#0097a7" labelFloat="true" layoutX="10.0" layoutY="10.0" prefHeight="36.0" prefWidth="291.0" promptText="Nhập lại mật khẩu">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </JFXPasswordField>
+                              <JFXButton onAction="#reset" prefHeight="38.0" prefWidth="116.0" style="-fx-background-color: #1de9b6; -fx-background-radius: 30;" text="Xác nhận" textFill="WHITE">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </JFXButton>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <FontAwesomeIconView glyphName="TIMES" layoutX="361.0" layoutY="32.0" onMouseClicked="#closeApp" size="25" />
+                  <FontAwesomeIconView glyphName="WINDOW_MINIMIZE" layoutX="328.0" layoutY="31.0" onMouseClicked="#minius" size="25" />
+                  <Label layoutX="12.0" layoutY="14.0" onMouseClicked="#login" text="Quay lại Đăng nhập" textFill="#006064">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="ANGLE_LEFT" selectionFill="#006064" size="18" />
+                     </graphic>
+                     <font>
+                        <Font name="System Bold Italic" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

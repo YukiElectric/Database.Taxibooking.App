@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="818.0" prefWidth="685.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.controller.ManagerAccountController">
+   <children>
+      <VBox alignment="CENTER_RIGHT" layoutX="48.0" layoutY="22.0" prefHeight="731.0" prefWidth="597.0" spacing="40.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" spacing="35.0">
+               <children>
+                  <ImageView fitHeight="133.0" fitWidth="131.0" pickOnBounds="true" preserveRatio="true" styleClass="circular-image">
+                     <image>
+                        <Image url="@img/avatar.png" />
+                     </image>
+                  </ImageView>
+                  <VBox spacing="20.0">
+                     <children>
+                        <Label fx:id="name" contentDisplay="RIGHT" text="Nguyễn Văn An">
+                           <font>
+                              <Font name="Arial Bold" size="36.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="account_type" contentDisplay="RIGHT" text="Quản lý">
+                           <font>
+                              <Font name="Arial Italic" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets top="30.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </HBox>
+            <AnchorPane>
+               <children>
+                  <VBox prefHeight="525.0" prefWidth="597.0" spacing="40.0" style="-fx-border-width: 0 1 0 1; -fx-border-color: #00796b;">
+                     <children>
+                        <VBox disable="true">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" prefHeight="65.0" prefWidth="595.0" spacing="70.0">
+                                 <children>
+                                    <Label prefHeight="28.0" prefWidth="123.0" text="Họ và tên : " textFill="#483c3c">
+                                       <font>
+                                          <Font name="System Italic" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXTextField fx:id="newName" focusColor="#0097a7" prefHeight="46.0" prefWidth="304.0">
+                                       <font>
+                                          <Font size="21.0" />
+                                       </font>
+                                    </JFXTextField>
+                                 </children>
+                                 <padding>
+                                    <Insets left="40.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="65.0" prefWidth="595.0" spacing="70.0">
+                                 <children>
+                                    <Label prefHeight="28.0" prefWidth="123.0" text="Email :" textFill="#483c3c">
+                                       <font>
+                                          <Font name="System Italic" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXTextField fx:id="newEmail" focusColor="#0097a7" prefHeight="46.0" prefWidth="304.0">
+                                       <font>
+                                          <Font size="21.0" />
+                                       </font>
+                                    </JFXTextField>
+                                 </children>
+                                 <padding>
+                                    <Insets left="40.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="65.0" prefWidth="595.0" spacing="70.0">
+                                 <children>
+                                    <Label prefHeight="28.0" prefWidth="123.0" text="Số điện thoại:" textFill="#483c3c">
+                                       <font>
+                                          <Font name="System Italic" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXTextField fx:id="newPhone" focusColor="#0097a7" prefHeight="46.0" prefWidth="304.0">
+                                       <font>
+                                          <Font size="21.0" />
+                                       </font>
+                                    </JFXTextField>
+                                 </children>
+                                 <padding>
+                                    <Insets left="40.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="65.0" prefWidth="595.0" spacing="70.0">
+                                 <children>
+                                    <Label prefHeight="28.0" prefWidth="123.0" text="CCCD:" textFill="#483c3c">
+                                       <font>
+                                          <Font name="System Italic" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXTextField fx:id="newCCCD" focusColor="#0097a7" prefHeight="46.0" prefWidth="304.0">
+                                       <font>
+                                          <Font size="21.0" />
+                                       </font>
+                                    </JFXTextField>
+                                 </children>
+                                 <padding>
+                                    <Insets left="40.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="65.0" prefWidth="595.0" spacing="40.0">
+                                 <children>
+                                    <Label prefHeight="28.0" prefWidth="123.0" text="Ngày sinh :" textFill="#483c3c">
+                                       <font>
+                                          <Font name="System Italic" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXTextField fx:id="newDay" alignment="CENTER" focusColor="#0097a7" prefHeight="36.0" prefWidth="60.0" promptText="Ngày">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <Label text="/">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXTextField fx:id="newMonth" alignment="CENTER" focusColor="#0097a7" prefHeight="36.0" prefWidth="60.0" promptText="Tháng">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <Label text="/">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXTextField fx:id="newYear" alignment="CENTER" focusColor="#0097a7" prefHeight="36.0" prefWidth="60.0" promptText="Năm">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </JFXTextField>
+                                 </children>
+                                 <padding>
+                                    <Insets left="40.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="65.0" prefWidth="595.0" spacing="70.0">
+                                 <children>
+                                    <Label prefHeight="28.0" prefWidth="123.0" text="Địa chỉ:" textFill="#483c3c">
+                                       <font>
+                                          <Font name="System Italic" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXTextField fx:id="newAddress" focusColor="#0097a7" prefHeight="46.0" prefWidth="304.0">
+                                       <font>
+                                          <Font size="21.0" />
+                                       </font>
+                                    </JFXTextField>
+                                 </children>
+                                 <padding>
+                                    <Insets left="40.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="11.0" layoutY="141.0" prefHeight="65.0" prefWidth="595.0" spacing="70.0">
+                           <children>
+                              <Label prefHeight="28.0" prefWidth="123.0" text="Mật khẩu :" textFill="#483c3c">
+                                 <font>
+                                    <Font name="System Italic" size="19.0" />
+                                 </font>
+                              </Label>
+                              <JFXPasswordField fx:id="newPass" focusColor="#0097a7" prefHeight="46.0" prefWidth="245.0">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </JFXPasswordField>
+                              <ToggleButton fx:id="editpass" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" styleClass="btn" text="ToggleButton">
+                                 <graphic>
+                                    <FontAwesomeIconView fill="#00796b" glyphName="PENCIL" size="30" styleClass="fontawesome" />
+                                 </graphic>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </ToggleButton>
+                           </children>
+                           <padding>
+                              <Insets left="40.0" />
+                           </padding>
+                        </HBox>
+                        <HBox fx:id="repassView" alignment="CENTER_LEFT" layoutX="11.0" layoutY="351.0" prefHeight="65.0" prefWidth="595.0" spacing="70.0">
+                           <children>
+                              <Label prefHeight="28.0" prefWidth="124.0" text="Nhập lại MK：" textFill="#483c3c">
+                                 <font>
+                                    <Font name="System Italic" size="18.0" />
+                                 </font>
+                              </Label>
+                              <JFXPasswordField fx:id="reNewPass" focusColor="#0097a7" prefHeight="46.0" prefWidth="240.0">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </JFXPasswordField>
+                           </children>
+                           <padding>
+                              <Insets left="40.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="595.0" spacing="70.0">
+                           <children>
+                              <JFXButton fx:id="cancelBtn" onAction="#cancel" style="-fx-border-color: #fb8c00; -fx-border-radius: 30;" text="Hủy" textFill="#fb8c00">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton fx:id="confirmBtn" layoutX="10.0" layoutY="10.0" onAction="#confirm" style="-fx-background-color: #00796b; -fx-background-radius: 30;" text="Xác nhận" textFill="WHITE">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </JFXButton>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+            <JFXButton fx:id="btn_log_out" contentDisplay="RIGHT" onAction="#logOut" styleClass="btn" text="Đăng xuất">
+               <graphic>
+                  <FontAwesomeIconView fill="#00796b" glyphName="SIGN_OUT" selectionFill="#00796b" />
+               </graphic>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

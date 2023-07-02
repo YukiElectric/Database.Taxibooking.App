@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="818.0" prefWidth="685.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.controller.CarManageController">
+   <children>
+      <AnchorPane layoutX="3.0" prefHeight="686.0" prefWidth="641.0">
+         <children>
+            <TableView fx:id="tableView" layoutX="25.0" layoutY="83.0" prefHeight="729.0" prefWidth="634.0">
+               <columns>
+                  <TableColumn fx:id="car_id" prefWidth="91.9999418258667" text="Mã xe" />
+                  <TableColumn fx:id="driver_name" prefWidth="121.33336639404297" text="Tên tài xế" />
+                  <TableColumn fx:id="brand" prefWidth="102.00007629394531" text="Tên xe" />
+                  <TableColumn fx:id="seat_number" prefWidth="99.99993896484375" text="Số ghế" />
+                  <TableColumn fx:id="license" prefWidth="120.66659545898438" text="Biển số" />
+                  <TableColumn fx:id="maintenance" prefWidth="93.3333740234375" text="Bảo dưỡng" />
+               </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <JFXTextField fx:id="searchView" focusColor="#0097a7" layoutX="519.0" layoutY="13.0" prefHeight="25.0" prefWidth="157.0" promptText="Nhập từ khóa tìm kiếm" />
+      <FontAwesomeIconView glyphName="SEARCH" layoutX="486.0" layoutY="36.0" size="30" wrappingWidth="11.142857551574707" />
+      <Button layoutX="624.0" layoutY="48.0" mnemonicParsing="false" onAction="#detailCar" styleClass="btn" text="Chi tiết" />
+      <Button layoutX="558.0" layoutY="48.0" mnemonicParsing="false" onAction="#deleteCar" prefHeight="28.0" prefWidth="57.0" styleClass="btn" text="Xóa" />
+      <Button layoutX="494.0" layoutY="48.0" mnemonicParsing="false" onAction="#prefixCar" prefHeight="28.0" prefWidth="57.0" styleClass="btn" text="Sửa" />
+      <Button layoutX="432.0" layoutY="48.0" mnemonicParsing="false" onAction="#addCar" prefHeight="28.0" prefWidth="57.0" styleClass="btn" text="Thêm" />
+   </children>
+</AnchorPane>

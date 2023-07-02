@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="818.0" prefWidth="683.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.controller.DriverAccountController">
+   <children>
+      <VBox alignment="CENTER_RIGHT" layoutX="48.0" layoutY="26.0" prefHeight="731.0" prefWidth="597.0" spacing="40.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
+               <children>
+                  <ImageView fx:id="imgView" fitHeight="133.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/bgr.png" />
+                     </image>
+                  </ImageView>
+                  <VBox spacing="20.0">
+                     <children>
+                        <Label fx:id="name" contentDisplay="RIGHT" prefHeight="42.0" prefWidth="433.0" text="Đồng Óc Chó">
+                           <font>
+                              <Font name="Arial Bold" size="36.0" />
+                           </font>
+                        </Label>
+                        <Label contentDisplay="RIGHT" text="Tài xế">
+                           <font>
+                              <Font name="Arial Italic" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets top="30.0" />
+                     </padding>
+                  </VBox>
+                  <ToggleButton fx:id="edit" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" styleClass="btn" text="ToggleButton">
+                     <graphic>
+                        <FontAwesomeIconView fill="#00796b" glyphName="PENCIL_SQUARE_ALT" size="30" styleClass="fontawesome" />
+                     </graphic>
+                     <HBox.margin>
+                        <Insets left="70.0" />
+                     </HBox.margin>
+                  </ToggleButton>
+               </children>
+            </HBox>
+            <AnchorPane>
+               <children>
+                  <VBox fx:id="infoView" layoutX="3.0" layoutY="3.0" prefHeight="521.0" prefWidth="594.0" spacing="40.0" visible="false">
+                     <children>
+                        <HBox spacing="70.0">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="106.0" prefWidth="151.0" spacing="20.0" style="-fx-background-color: #e0f2f1; -fx-background-radius: 20;">
+                                 <children>
+                                    <Label fx:id="countRequest" text="17">
+                                       <font>
+                                          <Font name="System Bold" size="30.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                       <padding>
+                                          <Insets top="15.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label layoutX="68.0" layoutY="35.0" text="Số chuyến đã đi">
+                                       <font>
+                                          <Font name="System Italic" size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <effect>
+                                    <DropShadow height="10.0" radius="4.5" width="10.0" />
+                                 </effect>
+                              </VBox>
+                              <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="106.0" prefWidth="151.0" spacing="20.0" style="-fx-background-color: #e2f3fd; -fx-background-radius: 20;">
+                                 <children>
+                                    <Label fx:id="countDistance" text="1.032">
+                                       <font>
+                                          <Font name="System Bold" size="30.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                       <padding>
+                                          <Insets top="15.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label layoutX="68.0" layoutY="35.0" text="Km đã di chuyển">
+                                       <font>
+                                          <Font name="System Italic" size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <effect>
+                                    <DropShadow height="10.0" radius="4.5" width="10.0" />
+                                 </effect>
+                              </VBox>
+                              <VBox alignment="CENTER" layoutX="161.0" layoutY="10.0" prefHeight="106.0" prefWidth="151.0" spacing="20.0" style="-fx-background-color: #fff3e0; -fx-background-radius: 20;">
+                                 <children>
+                                    <Label fx:id="rank" text="BẠC">
+                                       <font>
+                                          <Font name="System Bold" size="30.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                       <padding>
+                                          <Insets top="15.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label layoutX="68.0" layoutY="35.0" text="Xếp hạng tài xế">
+                                       <font>
+                                          <Font name="System Italic" size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <effect>
+                                    <DropShadow height="10.0" radius="4.5" width="10.0" />
+                                 </effect>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox>
+                           <children>
+                              <Label text="Thống kê tài chính gần đây">
+                                 <font>
+                                    <Font name="System Bold Italic" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <TableView fx:id="tableView" prefHeight="280.0" prefWidth="200.0">
+                           <columns>
+                              <TableColumn fx:id="monthTxt" prefWidth="101.99999618530273" text="Tháng" />
+                              <TableColumn fx:id="yearTxt" prefWidth="94.6666259765625" text="Năm" />
+                              <TableColumn fx:id="counMonthRequest" prefWidth="126.00007629394531" text="Số chuyến" />
+                              <TableColumn fx:id="earningTxt" prefWidth="145.3333740234375" text="Thu nhập" />
+                              <TableColumn fx:id="bonusTxt" prefWidth="123.33322143554688" text="Lương thưởng" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="editView" prefHeight="525.0" prefWidth="597.0" spacing="40.0" style="-fx-border-width: 0 1 0 1; -fx-border-color: #00796b;">
+                     <children>
+                        <VBox disable="true">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" prefHeight="65.0" prefWidth="595.0" spacing="70.0">
+                                 <children>
+                                    <Label prefHeight="28.0" prefWidth="123.0" text="Họ và tên : " textFill="#483c3c">
+                                       <font>
+                                          <Font name="System Italic" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXTextField fx:id="newName" focusColor="#0097a7" prefHeight="46.0" prefWidth="304.0">
+                                       <font>
+                                          <Font size="21.0" />
+                                       </font>
+                                    </JFXTextField>
+                                 </children>
+                                 <padding>
+                                    <Insets left="40.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="65.0" prefWidth="595.0" spacing="70.0">
+                                 <children>
+                                    <Label prefHeight="28.0" prefWidth="123.0" text="Email :" textFill="#483c3c">
+                                       <font>
+                                          <Font name="System Italic" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXTextField fx:id="newEmail" focusColor="#0097a7" prefHeight="46.0" prefWidth="304.0">
+                                       <font>
+                                          <Font size="21.0" />
+                                       </font>
+                                    </JFXTextField>
+                                 </children>
+                                 <padding>
+                                    <Insets left="40.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="65.0" prefWidth="595.0" spacing="70.0">
+                                 <children>
+                                    <Label prefHeight="28.0" prefWidth="123.0" text="Số điện thoại:" textFill="#483c3c">
+                                       <font>
+                                          <Font name="System Italic" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXTextField fx:id="newPhone" focusColor="#0097a7" prefHeight="46.0" prefWidth="304.0">
+                                       <font>
+                                          <Font size="21.0" />
+                                       </font>
+                                    </JFXTextField>
+                                 </children>
+                                 <padding>
+                                    <Insets left="40.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="65.0" prefWidth="595.0" spacing="70.0">
+                                 <children>
+                                    <Label prefHeight="28.0" prefWidth="123.0" text="CCCD:" textFill="#483c3c">
+                                       <font>
+                                          <Font name="System Italic" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXTextField fx:id="newCCCD" focusColor="#0097a7" prefHeight="46.0" prefWidth="304.0">
+                                       <font>
+                                          <Font size="21.0" />
+                                       </font>
+                                    </JFXTextField>
+                                 </children>
+                                 <padding>
+                                    <Insets left="40.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="65.0" prefWidth="595.0" spacing="40.0">
+                                 <children>
+                                    <Label prefHeight="28.0" prefWidth="123.0" text="Ngày sinh :" textFill="#483c3c">
+                                       <font>
+                                          <Font name="System Italic" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXTextField fx:id="newDay" alignment="CENTER" focusColor="#0097a7" prefHeight="36.0" prefWidth="60.0" promptText="Ngày">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <Label text="/">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXTextField fx:id="newMonth" alignment="CENTER" focusColor="#0097a7" prefHeight="36.0" prefWidth="60.0" promptText="Tháng">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </JFXTextField>
+                                    <Label text="/">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXTextField fx:id="newYear" alignment="CENTER" focusColor="#0097a7" prefHeight="36.0" prefWidth="60.0" promptText="Năm">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </JFXTextField>
+                                 </children>
+                                 <padding>
+                                    <Insets left="40.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="65.0" prefWidth="595.0" spacing="70.0">
+                                 <children>
+                                    <Label prefHeight="28.0" prefWidth="123.0" text="Địa chỉ:" textFill="#483c3c">
+                                       <font>
+                                          <Font name="System Italic" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXTextField fx:id="newAddress" focusColor="#0097a7" prefHeight="46.0" prefWidth="304.0">
+                                       <font>
+                                          <Font size="21.0" />
+                                       </font>
+                                    </JFXTextField>
+                                 </children>
+                                 <padding>
+                                    <Insets left="40.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="11.0" layoutY="141.0" prefHeight="65.0" prefWidth="595.0" spacing="70.0">
+                           <children>
+                              <Label prefHeight="28.0" prefWidth="123.0" text="Mật khẩu :" textFill="#483c3c">
+                                 <font>
+                                    <Font name="System Italic" size="19.0" />
+                                 </font>
+                              </Label>
+                              <JFXPasswordField fx:id="newPass" focusColor="#0097a7" prefHeight="46.0" prefWidth="245.0">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </JFXPasswordField>
+                              <ToggleButton fx:id="editPass" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#editPassword" styleClass="btn" text="ToggleButton">
+                                 <graphic>
+                                    <FontAwesomeIconView fill="#00796b" glyphName="PENCIL" size="30" styleClass="fontawesome" />
+                                 </graphic>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </ToggleButton>
+                           </children>
+                           <padding>
+                              <Insets left="40.0" />
+                           </padding>
+                        </HBox>
+                        <HBox fx:id="repassView" alignment="CENTER_LEFT" layoutX="11.0" layoutY="351.0" prefHeight="65.0" prefWidth="595.0" spacing="70.0">
+                           <children>
+                              <Label prefHeight="28.0" prefWidth="124.0" text="Nhập lại MK：" textFill="#483c3c">
+                                 <font>
+                                    <Font name="System Italic" size="18.0" />
+                                 </font>
+                              </Label>
+                              <JFXPasswordField fx:id="reNewPass" focusColor="#0097a7" prefHeight="46.0" prefWidth="240.0">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </JFXPasswordField>
+                           </children>
+                           <padding>
+                              <Insets left="40.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="595.0" spacing="70.0">
+                           <children>
+                              <JFXButton onAction="#cancel" style="-fx-border-color: #fb8c00; -fx-border-radius: 30;" text="Hủy" textFill="#fb8c00">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton layoutX="10.0" layoutY="10.0" onAction="#confirm" style="-fx-background-color: #00796b; -fx-background-radius: 30;" text="Xác nhận" textFill="WHITE">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </JFXButton>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+            <JFXButton contentDisplay="RIGHT" onAction="#logOut" styleClass="btn" text="Đăng xuất">
+               <graphic>
+                  <FontAwesomeIconView fill="#00796b" glyphName="SIGN_OUT" selectionFill="#00796b" />
+               </graphic>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

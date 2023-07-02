@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="818.0" prefWidth="653.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.controller.VoucherController">
+   <children>
+      <HBox alignment="CENTER" layoutX="94.0" layoutY="65.0" spacing="70.0">
+         <children>
+            <JFXTextField fx:id="voucher_input" alignment="CENTER" focusColor="#00796b" labelFloat="true" prefHeight="41.0" prefWidth="299.0" promptText="Nhập mã voucher" unFocusColor="#4eceac">
+               <font>
+                  <Font name="System Bold Italic" size="21.0" />
+               </font>
+            </JFXTextField>
+            <JFXButton onAction="#add" styleClass="btn" text="Thêm">
+               <graphic>
+                  <FontAwesomeIconView fill="#00796b" glyphName="PLUS_CIRCLE" size="20" />
+               </graphic>
+               <font>
+                  <Font name="System Bold Italic" size="21.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </HBox>
+      <Label layoutX="40.0" layoutY="152.0" text="Voucher đã có" textFill="#00796b">
+         <font>
+            <Font name="System Italic" size="23.0" />
+         </font>
+      </Label>
+      <ScrollPane layoutX="39.0" layoutY="201.0" prefHeight="593.0" prefWidth="582.0">
+         <content>
+            <FlowPane fx:id="voucher_list" hgap="100.0" prefHeight="857.0" prefWidth="553.0" prefWrapLength="245.0" rowValignment="TOP" vgap="70.0">
+               <padding>
+                  <Insets left="20.0" top="20.0" />
+               </padding>
+            </FlowPane>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="titleView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="778.0" prefWidth="404.0" style="-fx-background-radius: 30; -fx-background-color: white; -fx-border-radius: 30;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.controller.SignController">
+   <children>
+      <Label layoutX="139.0" layoutY="77.0" text="Đăng Ký" textFill="#1de9b6">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Label>
+      <VBox layoutX="14.0" layoutY="134.0" prefHeight="486.0" prefWidth="376.0" spacing="40.0">
+         <children>
+            <JFXTextField fx:id="name" focusColor="#0097a7" labelFloat="true" prefHeight="38.0" prefWidth="291.0" promptText="Họ và tên">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXTextField>
+            <AnchorPane>
+               <children>
+                  <ToggleButton layoutX="142.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" styleClass="btn" text="Nam" textFill="#efefef">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="gender" />
+                     </toggleGroup>
+                  </ToggleButton>
+                  <ToggleButton layoutX="227.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" styleClass="btn" text="Nữ" textFill="#00796b" toggleGroup="$gender" />
+                  <Label layoutY="2.0" text="Giới tính :">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <JFXTextField fx:id="phone" focusColor="#0097a7" labelFloat="true" layoutX="10.0" layoutY="10.0" prefHeight="38.0" prefWidth="291.0" promptText="Số điện thoại">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="email" focusColor="#0097a7" labelFloat="true" layoutX="10.0" layoutY="262.0" prefHeight="38.0" prefWidth="291.0" promptText="Email" unFocusColor="BLACK">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXTextField>
+            <HBox alignment="CENTER_LEFT" spacing="20.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="98.0" text="Ngày sinh :">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="day" alignment="CENTER" focusColor="#0097a7" prefHeight="36.0" prefWidth="60.0" promptText="Ngày">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXTextField>
+                  <Label layoutX="10.0" layoutY="19.0" text="/">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="month" alignment="CENTER" focusColor="#0097a7" layoutX="10.0" layoutY="10.0" prefHeight="36.0" prefWidth="60.0" promptText="Tháng">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXTextField>
+                  <Label layoutX="320.0" layoutY="19.0" text="/">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="year" alignment="CENTER" focusColor="#0097a7" layoutX="191.0" layoutY="10.0" prefHeight="36.0" prefWidth="60.0" promptText="Năm">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXTextField>
+               </children>
+            </HBox>
+            <JFXTextField fx:id="user" focusColor="#0097a7" labelFloat="true" prefHeight="38.0" prefWidth="291.0" promptText="Tên tài khoản">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXPasswordField fx:id="pass" focusColor="#0097a7" labelFloat="true" prefHeight="36.0" prefWidth="291.0" promptText="Mật khẩu">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXPasswordField>
+            <JFXPasswordField fx:id="repass" focusColor="#0097a7" labelFloat="true" prefHeight="36.0" prefWidth="291.0" promptText="Nhập lại mật khẩu">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXPasswordField>
+         </children>
+      </VBox>
+      <FontAwesomeIconView glyphName="TIMES" layoutX="361.0" layoutY="32.0" onMouseClicked="#closeApp" size="25" />
+      <FontAwesomeIconView glyphName="WINDOW_MINIMIZE" layoutX="328.0" layoutY="31.0" onMouseClicked="#minius" size="25" />
+      <JFXButton layoutX="144.0" layoutY="725.0" onAction="#sign" prefHeight="38.0" prefWidth="116.0" style="-fx-border-color: #1de9b6; -fx-border-radius: 30;" text="Đăng ký" textFill="#1de9b6">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="16.0" layoutY="23.0" onMouseClicked="#login" text="Quay lại Đăng nhập" textFill="#006064">
+         <graphic>
+            <FontAwesomeIconView glyphName="ANGLE_LEFT" selectionFill="#006064" size="18" />
+         </graphic>
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

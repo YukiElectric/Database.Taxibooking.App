@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="887.0" prefWidth="618.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.controller.ManagerHomeScrController">
+   <children>
+      <AnchorPane fx:id="titleView" prefHeight="59.0" prefWidth="626.0" style="-fx-background-color: #009688;">
+         <effect>
+            <DropShadow blurType="GAUSSIAN" height="20.0" radius="4.5" spread="0.32" width="0.0" />
+         </effect>
+         <children>
+            <HBox layoutX="32.0" layoutY="20.0" prefHeight="39.0" prefWidth="653.0" spacing="20.0">
+               <children>
+                  <ToggleButton fx:id="home" mnemonicParsing="false" prefHeight="39.0" prefWidth="109.0" selected="true" styleClass="tg" stylesheets="@style.css" text="Trang chủ" textOverrun="CLIP">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="gr" />
+                     </toggleGroup>
+                  </ToggleButton>
+                  <ToggleButton fx:id="car_manage" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" styleClass="tg" stylesheets="@style.css" text="Người dùng" toggleGroup="$gr">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </ToggleButton>
+                  <ToggleButton fx:id="acc_manage" layoutX="83.0" layoutY="10.0" mnemonicParsing="false" styleClass="tg" stylesheets="@style.css" text="Xe" toggleGroup="$gr">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </ToggleButton>
+                  <ToggleButton fx:id="ship_manage" mnemonicParsing="false" styleClass="tg" stylesheets="@style.css" text="Đơn hàng" toggleGroup="$gr">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </ToggleButton>
+                  <ToggleButton fx:id="statictis" layoutX="155.0" layoutY="10.0" mnemonicParsing="false" styleClass="tg" stylesheets="@style.css" text="Thống kê" toggleGroup="$gr">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </ToggleButton>
+                  <ToggleButton fx:id="acc" mnemonicParsing="false" styleClass="tg" stylesheets="@style.css" text="Tài khoản" toggleGroup="$gr">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </ToggleButton>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="scr" layoutY="57.0" prefHeight="830.0" prefWidth="685.0" />
+   </children>
+</AnchorPane>
