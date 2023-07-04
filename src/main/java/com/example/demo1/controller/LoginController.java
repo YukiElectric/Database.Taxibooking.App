@@ -100,11 +100,6 @@ public class LoginController implements Initializable {
         stage.close();
     }
 
-    void setLogin(){
-        userView.setText("manager");
-        passView.setText("manager");
-    }
-
     @FXML
     void forgot(MouseEvent event) {
 
