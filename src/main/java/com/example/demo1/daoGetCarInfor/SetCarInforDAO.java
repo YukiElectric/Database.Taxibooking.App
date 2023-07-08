@@ -29,7 +29,6 @@ public class SetCarInforDAO {
         return false;
     }
     public boolean UpdateCarInfor(String id,String brand,String license, int seatnumber, int maintenance, int driver_id){
-        System.out.println(id+" "+" "+brand+" "+" "+license+" "+" "+seatnumber+" chỗ "+" "+maintenance+" lần "+driver_id);
         try{
             Connection cnt = JDBCUtil.getConnection();
             String sql = "UPDATE car SET license = ?,brand = ?,seatnumber = ?,maintenance = ? WHERE id LIKE '"+id+"'";
@@ -39,7 +38,6 @@ public class SetCarInforDAO {
             st.setInt(3,seatnumber);
             st.setInt(4,maintenance);
             int update = st.executeUpdate();
-            System.out.println(update);
             if(update>0 && driver_id==0){
                 JDBCUtil.closeConnection(cnt);
                 return true;
@@ -49,43 +47,40 @@ public class SetCarInforDAO {
                 st = cnt.prepareStatement(sql);
                 ResultSet rs = st.executeQuery();
                 if(rs.next()){
-                    System.out.println("Count 3");
                     int driverID = rs.getInt("driver_id");
                     if(driverID==driver_id){
                         JDBCUtil.closeConnection(cnt);
                         return true;
-                    }
-                    System.out.println(driverID);
-                    sql = "UPDATE car SET driver_id = ? WHERE id LIKE '"+id+"'";
-                    st = cnt.prepareStatement(sql);
-                    st.setInt(1,driver_id);
-                    if(st.executeUpdate()>0){
-                        System.out.println("Count 4");
-                        sql = "SELECT id FROM car WHERE driver_id = "+driverID+" AND id <> '"+id+"'";
+                    }else{
+                        sql = "SELECT id FROM car WHERE driver_id = "+driver_id;
                         st = cnt.prepareStatement(sql);
                         ResultSet newRs = st.executeQuery();
-                        System.out.println(newRs.next());
-                        if(newRs.next()){
-                            System.out.println("Count 5");
-                            String carID = newRs.getString("id");
-                            System.out.println(carID);
-                            sql = "UPDATE car SET driver_id = "+driverID+" WHERE id LIKE '"+carID+"'";
-                            st = cnt.prepareStatement(sql);
-                            if(st.executeUpdate()>0){
-                                System.out.println("Count 6");
-                                JDBCUtil.closeConnection(cnt);
-                                return true;
-                            }
+                        String car_id = "";
+                        if(newRs.next()) car_id = newRs.getString("id");
+                        sql = "UPDATE car\n" +
+                                "SET driver_id = CASE\n" +
+                                "    WHEN id LIKE '"+id+"' THEN '"+driver_id+"'\n" +
+                                "    WHEN id LIKE '"+car_id+"' THEN '"+driverID+"'\n" +
+                                "    ELSE driver_id\n" +
+                                "END\n" +
+                                "WHERE id IN ('"+id+"','"+car_id+"')";
+                        st = cnt.prepareStatement(sql);
+                        st.executeUpdate();
+                        sql = "UPDATE driver\n" +
+                                "SET car_id = CASE\n" +
+                                "    WHEN CAST(id AS text) = '"+driver_id+"' THEN '"+id+"'\n" +
+                                "    WHEN CAST(id AS text) = '"+driverID+"' THEN '"+car_id+"'\n" +
+                                "    ELSE car_id\n" +
+                                "END\n" +
+                                "WHERE id IN ("+driver_id+","+driverID+")";
+                        st = cnt.prepareStatement(sql);
+                        if(st.executeUpdate()>0){
+                            JDBCUtil.closeConnection(cnt);
+                            return true;
                         }
-                    }
-                }else{
-                    sql = "UPDATE car SET driver_id = ? WHERE id LIKE '"+id+"'";
-                    st = cnt.prepareStatement(sql);
-                    st.setInt(1,driver_id);
-                    if(st.executeUpdate()>0){
                         JDBCUtil.closeConnection(cnt);
-                        return true;
                     }
+
                 }
             }
             JDBCUtil.closeConnection(cnt);
