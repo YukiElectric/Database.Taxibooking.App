@@ -24,6 +24,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -480,6 +481,11 @@ public class DriverManageController implements Initializable {
                 carName.setText(rs.getBrand());
             }
         }
+    }
+
+    @FXML
+    void closeStage(MouseEvent event) {
+        ((Stage) name.getScene().getWindow()).close();
     }
 
     @Override

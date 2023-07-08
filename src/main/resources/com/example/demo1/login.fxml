@@ -17,12 +17,12 @@
                   <Font name="System Bold" size="26.0" />
                </font>
             </Label>
-            <JFXTextField fx:id="userView" focusColor="#0097a7" labelFloat="true" layoutX="86.0" layoutY="135.0" prefHeight="38.0" prefWidth="244.0" promptText="Tài khoản" text="manager">
+            <JFXTextField fx:id="userView" focusColor="#0097a7" labelFloat="true" layoutX="86.0" layoutY="135.0" onKeyPressed="#enterLoginPressed" prefHeight="38.0" prefWidth="244.0" promptText="Tài khoản">
                <font>
                   <Font size="16.0" />
                </font>
             </JFXTextField>
-            <JFXPasswordField fx:id="passView" focusColor="#0097a7" labelFloat="true" layoutX="86.0" layoutY="214.0" prefHeight="29.0" prefWidth="244.0" promptText="Mật khẩu" text="manager">
+            <JFXPasswordField fx:id="passView" focusColor="#0097a7" labelFloat="true" layoutX="86.0" layoutY="214.0" onKeyPressed="#enterLoginPressed" prefHeight="29.0" prefWidth="244.0" promptText="Mật khẩu">
                <font>
                   <Font size="16.0" />
                </font>
@@ -49,7 +49,7 @@
                   <Font name="Kristen ITC" size="30.0" />
                </font>
             </Label>
-            <JFXTextField fx:id="confrim" alignment="CENTER" focusColor="#0097a7" layoutX="208.0" layoutY="291.0" prefHeight="38.0" prefWidth="116.0" promptText="Mã xác nhận">
+            <JFXTextField fx:id="confrim" alignment="CENTER" focusColor="#0097a7" layoutX="208.0" layoutY="291.0" onKeyPressed="#enterLoginPressed" prefHeight="38.0" prefWidth="116.0" promptText="Mã xác nhận">
                <font>
                   <Font size="18.0" />
                </font>

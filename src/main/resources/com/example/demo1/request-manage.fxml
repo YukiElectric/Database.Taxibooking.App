@@ -13,9 +13,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="titleView" prefHeight="757.0" prefWidth="630.0" style="-fx-border-color: black;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.controller.RequestManageController">
+<AnchorPane fx:id="titleView" prefHeight="786.0" prefWidth="630.0" style="-fx-border-color: black;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.controller.RequestManageController">
    <children>
-      <VBox fx:id="bookingView" layoutX="27.0" layoutY="60.0" prefHeight="689.0" prefWidth="581.0" spacing="40.0">
+      <VBox fx:id="bookingView" layoutX="27.0" layoutY="79.0" prefHeight="689.0" prefWidth="581.0" spacing="40.0">
          <children>
             <VBox fx:id="booking_scr" spacing="40.0" style="-fx-border-color: #00796b; -fx-border-width: 0 1.5 0 1.5;">
                <children>
@@ -235,9 +235,17 @@
             </AnchorPane>
          </children>
       </VBox>
-      <Label layoutX="199.0" layoutY="2.0" text="Thông tin chuyến đi" textFill="#1de9b6">
+      <Label layoutX="199.0" layoutY="25.0" text="Thông tin chuyến đi" textFill="#1de9b6">
          <font>
             <Font name="System Bold" size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="26.0" layoutY="10.0" onMouseClicked="#closeStage" text="Thoát xem thông tin" textFill="#006064">
+         <graphic>
+            <FontAwesomeIconView glyphName="ANGLE_LEFT" selectionFill="#006064" size="18" />
+         </graphic>
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
          </font>
       </Label>
    </children>

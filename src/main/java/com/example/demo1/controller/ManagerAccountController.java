@@ -11,7 +11,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -20,6 +22,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ManagerAccountController implements Initializable {
+    @FXML
+    private ImageView imgView;
 
     @FXML
     private Label account_type;
@@ -83,6 +87,12 @@ public class ManagerAccountController implements Initializable {
     }
 
     @FXML
+    void setPass(ActionEvent event) {
+        if (editpass.isSelected()) {
+            newPass.clear();
+        } else newPass.setText("********");
+    }
+    @FXML
     void logOut(ActionEvent event) {
         Stage st = (Stage) btn_log_out.getScene().getWindow();
         st.close();
@@ -104,5 +114,11 @@ public class ManagerAccountController implements Initializable {
         repassView.visibleProperty().bind(editpass.selectedProperty());
         cancelBtn.visibleProperty().bind(editpass.selectedProperty());
         confirmBtn.visibleProperty().bind(editpass.selectedProperty());
+        Circle clip = new Circle();
+        clip.setRadius(imgView.getFitWidth() / 2);
+        clip.setCenterX(imgView.getFitWidth() / 2);
+        clip.setCenterY(imgView.getFitHeight() / 2);
+        imgView.setClip(clip);
+        newPass.setText("********");
     }
 }

@@ -19,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -410,6 +411,10 @@ public class EmployeeManageController implements Initializable {
         }
     }
 
+    @FXML
+    void closeStage(MouseEvent event) {
+        ((Stage) name.getScene().getWindow()).close();
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -264,7 +265,10 @@ public class CarInforManageController implements Initializable {
         }
     }
 
-
+    @FXML
+    void closeStage(MouseEvent event) {
+        ((Stage) driverIDView.getScene().getWindow()).close();
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         App.setDraggable(titleView);

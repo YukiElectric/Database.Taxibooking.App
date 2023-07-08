@@ -20,14 +20,14 @@
          <children>
             <HBox alignment="CENTER_LEFT" spacing="35.0">
                <children>
-                  <ImageView fitHeight="133.0" fitWidth="131.0" pickOnBounds="true" preserveRatio="true" styleClass="circular-image">
+                  <ImageView fx:id="imgView" fitHeight="133.0" fitWidth="131.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@img/avatar.png" />
+                        <Image url="@img/bgr.png" />
                      </image>
                   </ImageView>
                   <VBox spacing="20.0">
                      <children>
-                        <Label fx:id="name" contentDisplay="RIGHT" text="Nguyễn Văn An">
+                        <Label fx:id="name" contentDisplay="RIGHT" text="Phạm Thành Lập">
                            <font>
                               <Font name="Arial Bold" size="36.0" />
                            </font>
@@ -57,7 +57,7 @@
                                           <Font name="System Italic" size="19.0" />
                                        </font>
                                     </Label>
-                                    <JFXTextField fx:id="newName" focusColor="#0097a7" prefHeight="46.0" prefWidth="304.0">
+                                    <JFXTextField fx:id="newName" focusColor="#0097a7" prefHeight="46.0" prefWidth="304.0" text="Phạm Thành Lập">
                                        <font>
                                           <Font size="21.0" />
                                        </font>
@@ -74,7 +74,7 @@
                                           <Font name="System Italic" size="19.0" />
                                        </font>
                                     </Label>
-                                    <JFXTextField fx:id="newEmail" focusColor="#0097a7" prefHeight="46.0" prefWidth="304.0">
+                                    <JFXTextField fx:id="newEmail" focusColor="#0097a7" prefHeight="46.0" prefWidth="304.0" text="phamthanhlap2003.hha@gmail.com">
                                        <font>
                                           <Font size="21.0" />
                                        </font>
@@ -91,7 +91,7 @@
                                           <Font name="System Italic" size="19.0" />
                                        </font>
                                     </Label>
-                                    <JFXTextField fx:id="newPhone" focusColor="#0097a7" prefHeight="46.0" prefWidth="304.0">
+                                    <JFXTextField fx:id="newPhone" focusColor="#0097a7" prefHeight="46.0" prefWidth="304.0" text="0337726028">
                                        <font>
                                           <Font size="21.0" />
                                        </font>
@@ -108,7 +108,7 @@
                                           <Font name="System Italic" size="19.0" />
                                        </font>
                                     </Label>
-                                    <JFXTextField fx:id="newCCCD" focusColor="#0097a7" prefHeight="46.0" prefWidth="304.0">
+                                    <JFXTextField fx:id="newCCCD" focusColor="#0097a7" prefHeight="46.0" prefWidth="304.0" text="036203011139">
                                        <font>
                                           <Font size="21.0" />
                                        </font>
@@ -125,7 +125,7 @@
                                           <Font name="System Italic" size="19.0" />
                                        </font>
                                     </Label>
-                                    <JFXTextField fx:id="newDay" alignment="CENTER" focusColor="#0097a7" prefHeight="36.0" prefWidth="60.0" promptText="Ngày">
+                                    <JFXTextField fx:id="newDay" alignment="CENTER" focusColor="#0097a7" prefHeight="36.0" prefWidth="60.0" promptText="Ngày" text="07">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
@@ -135,7 +135,7 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <JFXTextField fx:id="newMonth" alignment="CENTER" focusColor="#0097a7" prefHeight="36.0" prefWidth="60.0" promptText="Tháng">
+                                    <JFXTextField fx:id="newMonth" alignment="CENTER" focusColor="#0097a7" prefHeight="36.0" prefWidth="60.0" promptText="Tháng" text="02">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
@@ -145,7 +145,7 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <JFXTextField fx:id="newYear" alignment="CENTER" focusColor="#0097a7" prefHeight="36.0" prefWidth="60.0" promptText="Năm">
+                                    <JFXTextField fx:id="newYear" alignment="CENTER" focusColor="#0097a7" prefHeight="36.0" prefWidth="60.0" promptText="Năm" text="2003">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
@@ -162,7 +162,7 @@
                                           <Font name="System Italic" size="19.0" />
                                        </font>
                                     </Label>
-                                    <JFXTextField fx:id="newAddress" focusColor="#0097a7" prefHeight="46.0" prefWidth="304.0">
+                                    <JFXTextField fx:id="newAddress" focusColor="#0097a7" prefHeight="46.0" prefWidth="304.0" text="Hoàng Mai, Hà Nội">
                                        <font>
                                           <Font size="21.0" />
                                        </font>
@@ -186,7 +186,7 @@
                                     <Font size="21.0" />
                                  </font>
                               </JFXPasswordField>
-                              <ToggleButton fx:id="editpass" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" styleClass="btn" text="ToggleButton">
+                              <ToggleButton fx:id="editpass" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#setPass" styleClass="btn" text="ToggleButton">
                                  <graphic>
                                     <FontAwesomeIconView fill="#00796b" glyphName="PENCIL" size="30" styleClass="fontawesome" />
                                  </graphic>

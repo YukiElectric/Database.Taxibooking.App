@@ -3,20 +3,21 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXRadioButton?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="titleView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="523.0" prefWidth="404.0" style="-fx-background-color: white; -fx-border-color: black;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.controller.CarInforManageController">
+<AnchorPane fx:id="titleView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="542.0" prefWidth="404.0" style="-fx-background-color: white; -fx-border-color: black;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.controller.CarInforManageController">
    <children>
-      <Label layoutX="131.0" layoutY="9.0" text="Thông tin xe" textFill="#1de9b6">
+      <Label layoutX="109.0" layoutY="35.0" text="Thông tin xe" textFill="#1de9b6">
          <font>
             <Font name="System Bold" size="26.0" />
          </font>
       </Label>
-      <VBox layoutX="14.0" layoutY="66.0" prefHeight="486.0" prefWidth="376.0" spacing="40.0">
+      <VBox layoutX="14.0" layoutY="95.0" prefHeight="446.0" prefWidth="376.0" spacing="40.0">
          <children>
             <JFXTextField fx:id="brandView" focusColor="#0097a7" prefHeight="38.0" prefWidth="291.0" promptText="Tên xe">
                <font>
@@ -72,15 +73,23 @@
             </JFXTextField>
          </children>
       </VBox>
-      <JFXButton layoutX="52.0" layoutY="439.0" onAction="#saveAct" prefHeight="63.0" prefWidth="126.0" style="-fx-border-color: #1de9b6; -fx-border-radius: 30;" text="Lưu" textFill="#1de9b6">
+      <JFXButton layoutX="52.0" layoutY="468.0" onAction="#saveAct" prefHeight="63.0" prefWidth="126.0" style="-fx-border-color: #1de9b6; -fx-border-radius: 30;" text="Lưu" textFill="#1de9b6">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="216.0" layoutY="439.0" onAction="#deleteAct" prefHeight="63.0" prefWidth="138.0" style="-fx-border-color: #f57c00; -fx-border-radius: 39;" text="Xóa" textFill="#f57c00">
+      <JFXButton layoutX="216.0" layoutY="468.0" onAction="#deleteAct" prefHeight="63.0" prefWidth="138.0" style="-fx-border-color: #f57c00; -fx-border-radius: 39;" text="Xóa" textFill="#f57c00">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </JFXButton>
+      <Label layoutX="6.0" layoutY="6.0" onMouseClicked="#closeStage" text="Thoát xem thông tin" textFill="#006064">
+         <graphic>
+            <FontAwesomeIconView glyphName="ANGLE_LEFT" selectionFill="#006064" size="18" />
+         </graphic>
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

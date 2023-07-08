@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -98,11 +99,17 @@ public class RequestManageController implements Initializable {
 
     @FXML
     void cancel(ActionEvent event) {
-
+        Stage stage = (Stage) day.getScene().getWindow();
+        stage.close();
     }
 
     public void Initializable(){
         App.setDraggable(titleView);
+    }
+
+    @FXML
+    void closeStage(MouseEvent event) {
+        ((Stage) day.getScene().getWindow()).close();
     }
 
     @Override

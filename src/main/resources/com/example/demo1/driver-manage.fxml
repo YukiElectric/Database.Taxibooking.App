@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ToggleButton?>
@@ -13,14 +14,14 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="titleView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="683.0" prefWidth="804.0" style="-fx-background-color: white; -fx-border-color: black;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.controller.DriverManageController">
+<AnchorPane fx:id="titleView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="684.0" prefWidth="804.0" style="-fx-background-color: white; -fx-border-color: black;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.controller.DriverManageController">
    <children>
-      <Label layoutX="300.0" layoutY="7.0" text="Thông tin tài xế" textFill="#1de9b6">
+      <Label layoutX="300.0" layoutY="14.0" text="Thông tin tài xế" textFill="#1de9b6">
          <font>
             <Font name="System Bold" size="26.0" />
          </font>
       </Label>
-      <VBox layoutX="14.0" layoutY="66.0" prefHeight="486.0" prefWidth="376.0" spacing="40.0">
+      <VBox layoutX="14.0" layoutY="73.0" prefHeight="486.0" prefWidth="376.0" spacing="40.0">
          <children>
             <JFXTextField fx:id="name" focusColor="#0097a7" prefHeight="38.0" prefWidth="291.0" promptText="Họ và tên">
                <font>
@@ -98,17 +99,17 @@
             </JFXTextField>
          </children>
       </VBox>
-      <JFXButton layoutX="257.0" layoutY="591.0" onAction="#saveAct" prefHeight="63.0" prefWidth="126.0" style="-fx-border-color: #1de9b6; -fx-border-radius: 30;" text="Lưu" textFill="#1de9b6">
+      <JFXButton layoutX="257.0" layoutY="598.0" onAction="#saveAct" prefHeight="63.0" prefWidth="126.0" style="-fx-border-color: #1de9b6; -fx-border-radius: 30;" text="Lưu" textFill="#1de9b6">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="415.0" layoutY="589.0" onAction="#deleteAct" prefHeight="63.0" prefWidth="138.0" style="-fx-border-color: #f57c00; -fx-border-radius: 39;" text="Xóa" textFill="#f57c00">
+      <JFXButton layoutX="415.0" layoutY="596.0" onAction="#deleteAct" prefHeight="63.0" prefWidth="138.0" style="-fx-border-color: #f57c00; -fx-border-radius: 39;" text="Xóa" textFill="#f57c00">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </JFXButton>
-      <VBox layoutX="418.0" layoutY="136.0" prefHeight="383.0" prefWidth="376.0" spacing="40.0">
+      <VBox layoutX="418.0" layoutY="143.0" prefHeight="383.0" prefWidth="376.0" spacing="40.0">
          <children>
             <JFXTextField fx:id="userDriverName" focusColor="#0097a7" labelFloat="true" prefHeight="38.0" prefWidth="291.0" promptText="Tài khoản">
                <font>
@@ -142,6 +143,14 @@
             </JFXPasswordField>
          </children>
       </VBox>
-      <Line endX="13.333343505859375" endY="495.33331298828125" layoutX="390.0" layoutY="64.0" startX="13.333343505859375" startY="4.6666717529296875" stroke="#1de9b6" />
+      <Line endX="13.333343505859375" endY="495.33331298828125" layoutX="390.0" layoutY="71.0" startX="13.333343505859375" startY="4.6666717529296875" stroke="#1de9b6" />
+      <Label layoutX="16.0" layoutY="11.0" onMouseClicked="#closeStage" text="Thoát xem thông tin" textFill="#006064">
+         <graphic>
+            <FontAwesomeIconView glyphName="ANGLE_LEFT" selectionFill="#006064" size="18" />
+         </graphic>
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

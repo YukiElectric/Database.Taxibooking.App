@@ -12,6 +12,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
@@ -162,7 +165,6 @@ public class LoginController implements Initializable {
     void minius(MouseEvent event) {
         Stage stage = (Stage) capcha.getScene().getWindow();
         stage.toBack();
-
     }
 
     @FXML
@@ -186,6 +188,18 @@ public class LoginController implements Initializable {
         close();
     }
 
+    @FXML
+    void enterLoginPressed(KeyEvent event) {
+        if(event.getCode() == KeyCode.ENTER){
+            TextField currentTextField = (TextField) event.getSource();
+            if(currentTextField.equals(userView)){
+                passView.requestFocus();
+            }else if(currentTextField.equals(passView)){
+                login(null);
+            }else if (currentTextField.equals(confrim)) login(null);
+        }
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         capcha.setText((int) (Math.random() * 90000 + 10000) + "");
@@ -193,7 +207,6 @@ public class LoginController implements Initializable {
         App.setDraggable(titleView);
     }
 }
-
 
 
 
