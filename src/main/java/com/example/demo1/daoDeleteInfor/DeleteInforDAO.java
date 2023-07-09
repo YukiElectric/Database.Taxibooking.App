@@ -30,6 +30,7 @@ public class DeleteInforDAO extends DAODeleteInforInterface{
             sql = "INSERT INTO log(action,time,date,id) VALUES ('"+action+"','"+time+"','"+date+"','"+manager_id+"')";
             st = cnt.prepareStatement(sql);
             st.executeUpdate();
+            JDBCUtil.closeConnection(cnt);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -57,6 +58,7 @@ public class DeleteInforDAO extends DAODeleteInforInterface{
             sql = "INSERT INTO log(action,time,date,id) VALUES ('"+action+"','"+time+"','"+date+"','"+manager_id+"')";
             st = cnt.prepareStatement(sql);
             st.executeUpdate();
+            JDBCUtil.closeConnection(cnt);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -75,6 +77,7 @@ public class DeleteInforDAO extends DAODeleteInforInterface{
             sql = "INSERT INTO log(action,time,date,id) VALUES ('"+action+"','"+time+"','"+date+"','"+manager_id+"')";
             st = cnt.prepareStatement(sql);
             st.executeUpdate();
+            JDBCUtil.closeConnection(cnt);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -96,6 +99,7 @@ public class DeleteInforDAO extends DAODeleteInforInterface{
             sql = "INSERT INTO log(action,time,date,id) VALUES ('"+action+"','"+time+"','"+date+"','"+manager_id+"')";
             st = cnt.prepareStatement(sql);
             st.executeUpdate();
+            JDBCUtil.closeConnection(cnt);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -114,6 +118,7 @@ public class DeleteInforDAO extends DAODeleteInforInterface{
             sql = "INSERT INTO log(action,time,date,id) VALUES ('"+action+"','"+time+"','"+date+"','"+manager_id+"')";
             st = cnt.prepareStatement(sql);
             st.executeUpdate();
+            JDBCUtil.closeConnection(cnt);
         }catch (Exception e){
             e.printStackTrace();
         }
