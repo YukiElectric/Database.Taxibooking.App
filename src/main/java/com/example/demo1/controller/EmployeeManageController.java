@@ -81,7 +81,7 @@ public class EmployeeManageController implements Initializable {
         Stage stage = (Stage) day.getScene().getWindow();
         stage.close();
     }
-    private static final String API_KEY = "AIzaSyBsXqkH0yxkIrghjSqoQScksQWaYOgJSkI";
+    private static final String API_KEY = "AIzaSyDY9JFHpiLuYUTI4t1phuKnIpZYvqygpfg";
     boolean CheckLocation(String place) {
         if (place.equals("")) return false;
         String location = "Việt Nam";

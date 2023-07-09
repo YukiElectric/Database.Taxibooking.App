@@ -162,7 +162,7 @@ public class BookingController implements Initializable {
         }
     }
 
-    private static final String API_KEY = "AIzaSyBsXqkH0yxkIrghjSqoQScksQWaYOgJSkI";
+    private static final String API_KEY = "AIzaSyDY9JFHpiLuYUTI4t1phuKnIpZYvqygpfg";
 
     void SetUp() {
         UserHistory result = GetHistoryDAO.getInstance().checkStatus(TransferID.getID());
