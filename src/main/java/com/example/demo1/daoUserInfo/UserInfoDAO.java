@@ -103,7 +103,7 @@ public class UserInfoDAO extends UserDAOInterface {
             try {
                 Connection cnt = JDBCUtil.getConnection();
                 String sql = "INSERT INTO user_information (id,fullname,gender,email,phone_number,dob) VALUES(?,?,?,?,?,?)";
-                PreparedStatement st = cnt.prepareStatement(sql);
+                PreparedStatement st = cnt.prepareStatement(sql);       //37
                 st.setInt(1, id);
                 st.setString(2, name);
                 st.setString(3, gender);
@@ -128,7 +128,7 @@ public class UserInfoDAO extends UserDAOInterface {
         try {
             Connection cnt = JDBCUtil.getConnection();
             String sql = "UPDATE account SET username = ?, password = ? WHERE id = "+id;
-            PreparedStatement st = cnt.prepareStatement(sql);
+            PreparedStatement st = cnt.prepareStatement(sql);       //38
             st.setString(1,account);
             st.setString(2,password);
             int rs = st.executeUpdate();
@@ -147,7 +147,7 @@ public class UserInfoDAO extends UserDAOInterface {
         try{
             Connection cnt = JDBCUtil.getConnection();
             String sql = "UPDATE user_information SET fullname = ?, gender = ?, email = ?, phone_number = ?, dob = ? WHERE id = "+id;
-            PreparedStatement st = cnt.prepareStatement(sql);
+            PreparedStatement st = cnt.prepareStatement(sql);       //39
             st.setString(1,name);
             st.setString(2,gender);
             st.setString(3,email);
@@ -169,7 +169,7 @@ public class UserInfoDAO extends UserDAOInterface {
         try {
             Connection cnt = JDBCUtil.getConnection();
             String sql = "SELECT * FROM driver WHERE phone_number = ?";
-            PreparedStatement st = cnt.prepareStatement(sql);
+            PreparedStatement st = cnt.prepareStatement(sql);       //40
             st.setString(1, phone);
             ResultSet rs = st.executeQuery();
             if (!rs.next()) {
@@ -186,7 +186,7 @@ public class UserInfoDAO extends UserDAOInterface {
         try {
             Connection cnt = JDBCUtil.getConnection();
             String sql = "SELECT * FROM driver WHERE email = ?";
-            PreparedStatement st = cnt.prepareStatement(sql);
+            PreparedStatement st = cnt.prepareStatement(sql);       //41
             st.setString(1, email);
             ResultSet rs = st.executeQuery();
             if (!rs.next()) {

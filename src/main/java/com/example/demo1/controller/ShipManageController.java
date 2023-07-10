@@ -157,7 +157,7 @@ public class ShipManageController implements Initializable {
                     return true;
                 }else if(dateTimeString.indexOf(searchKey) > -1){
                     return true;
-                }else if(RequestInfor.getDriver_name().toLowerCase().indexOf(searchKey) > -1){
+                }else if(RequestInfor.getDriver_name()!=null && RequestInfor.getDriver_name().toLowerCase().indexOf(searchKey) > -1){
                     return true;
                 }else if(RequestInfor.getStatus().toLowerCase().indexOf(searchKey) > -1){
                     return true;

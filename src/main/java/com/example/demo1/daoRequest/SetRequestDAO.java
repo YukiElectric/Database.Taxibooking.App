@@ -97,7 +97,7 @@ public class SetRequestDAO extends DAORequestInterface {
                     st = cnt.prepareStatement(sql);
                     st.executeUpdate();
                 }
-                sql = "UPDATE request SET status = 'Đã hủy' WHERE id = '" + result + "'";
+                sql = "UPDATE request SET status = 'Đã hủy' WHERE id = '" + result + "'";       //25
                 st = cnt.prepareStatement(sql);
                 st.executeUpdate();
             }
@@ -133,7 +133,7 @@ public class SetRequestDAO extends DAORequestInterface {
                         sql = "UPDATE driver SET status = 'Đang có đơn' WHERE id = " + id;
                         st = cnt.prepareStatement(sql);
                         st.executeUpdate();
-                        JDBCUtil.closeConnection(cnt);
+                        JDBCUtil.closeConnection(cnt);      //26
                         return true;
                     }
                 }

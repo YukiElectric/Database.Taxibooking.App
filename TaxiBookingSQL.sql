@@ -5,7 +5,7 @@
 -- Dumped from database version 15.2
 -- Dumped by pg_dump version 15.2
 
--- Started on 2023-07-08 11:09:46
+-- Started on 2023-07-11 00:06:40
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -19,7 +19,7 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- TOC entry 3396 (class 1262 OID 17059)
+-- TOC entry 3404 (class 1262 OID 34702)
 -- Name: TaxiBooking; Type: DATABASE; Schema: -; Owner: admin
 --
 
@@ -42,7 +42,7 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- TOC entry 2 (class 3079 OID 17211)
+-- TOC entry 2 (class 3079 OID 34703)
 -- Name: adminpack; Type: EXTENSION; Schema: -; Owner: -
 --
 
@@ -50,7 +50,7 @@ CREATE EXTENSION IF NOT EXISTS adminpack WITH SCHEMA pg_catalog;
 
 
 --
--- TOC entry 3397 (class 0 OID 0)
+-- TOC entry 3405 (class 0 OID 0)
 -- Dependencies: 2
 -- Name: EXTENSION adminpack; Type: COMMENT; Schema: -; Owner: 
 --
@@ -59,7 +59,171 @@ COMMENT ON EXTENSION adminpack IS 'administrative functions for PostgreSQL';
 
 
 --
--- TOC entry 238 (class 1255 OID 25832)
+-- TOC entry 241 (class 1255 OID 34826)
+-- Name: change_car(); Type: FUNCTION; Schema: public; Owner: postgres
+--
+
+CREATE FUNCTION public.change_car() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+DECLARE
+    change_time VARCHAR(20);
+BEGIN
+    IF TG_OP = 'INSERT' THEN
+        IF EXTRACT(DAY FROM CURRENT_DATE) < 15 THEN
+            change_time := CONCAT('Tháng ', EXTRACT(MONTH FROM CURRENT_DATE), ' ', EXTRACT(YEAR FROM CURRENT_DATE));
+            IF EXISTS(SELECT * FROM salary WHERE "date" = change_time) THEN
+                UPDATE salary
+                SET supplementary = (SELECT supplementary FROM salary WHERE "date" = delete_time) + 5000000
+                WHERE "date" = delete_time;
+            END IF;
+        END IF;
+    ELSIF TG_OP = 'DELETE' THEN
+        IF EXTRACT(DAY FROM CURRENT_DATE) < 15 THEN
+            change_time := CONCAT('Tháng ', EXTRACT(MONTH FROM CURRENT_DATE), ' ', EXTRACT(YEAR FROM CURRENT_DATE));
+            IF EXISTS(SELECT * FROM salary WHERE "date" = change_time) THEN
+                UPDATE salary
+                SET supplementary = (SELECT supplementary FROM salary WHERE "date" = delete_time) - 5000000
+                WHERE "date" = delete_time;
+            END IF;
+        END IF;
+    END IF;
+
+    RETURN NEW;
+END;
+$$;
+
+
+ALTER FUNCTION public.change_car() OWNER TO postgres;
+
+--
+-- TOC entry 239 (class 1255 OID 34823)
+-- Name: change_employee(); Type: FUNCTION; Schema: public; Owner: postgres
+--
+
+CREATE FUNCTION public.change_employee() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+DECLARE
+    delete_time VARCHAR(20);
+BEGIN
+    IF TG_OP = 'INSERT' THEN
+        IF EXTRACT(DAY FROM CURRENT_DATE) < 15 THEN
+            delete_time := CONCAT('Tháng ', EXTRACT(MONTH FROM CURRENT_DATE), ' ', EXTRACT(YEAR FROM CURRENT_DATE));
+            IF EXISTS(SELECT * FROM salary WHERE "date" = delete_time) THEN
+                UPDATE salary
+                SET salary = (SELECT salary FROM salary WHERE "date" = delete_time) + 15000000
+                WHERE "date" = delete_time;
+            END IF;
+        END IF;
+    ELSIF TG_OP = 'DELETE' THEN
+        IF EXTRACT(DAY FROM CURRENT_DATE) < 15 THEN
+            delete_time := CONCAT('Tháng ', EXTRACT(MONTH FROM CURRENT_DATE), ' ', EXTRACT(YEAR FROM CURRENT_DATE));
+            IF EXISTS(SELECT * FROM salary WHERE "date" = delete_time) THEN
+                UPDATE salary
+                SET salary = (SELECT salary FROM salary WHERE "date" = delete_time) - 15000000
+                WHERE "date" = delete_time;
+            END IF;
+        END IF;
+    END IF;
+
+    RETURN NEW;
+END;
+$$;
+
+
+ALTER FUNCTION public.change_employee() OWNER TO postgres;
+
+--
+-- TOC entry 227 (class 1255 OID 34820)
+-- Name: update_request(); Type: FUNCTION; Schema: public; Owner: postgres
+--
+
+CREATE FUNCTION public.update_request() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+    DECLARE
+        count_request_canceled INT;
+        count_request_delete INT;
+        new_ids TEXT[];
+        max_existing_id TEXT;
+        new_id_counter INT := 0;
+        new_id TEXT;
+        temp_id TEXT;
+        counter INT := 1;
+    BEGIN
+        IF NEW.id = 'r9999' THEN
+            count_request_canceled := (SELECT COUNT(*) FROM request WHERE status LIKE 'Đã hủy');
+            count_request_delete := (SELECT COUNT(*)/2 FROM request);
+            IF count_request_canceled >= count_request_delete THEN 
+                DELETE FROM request
+                WHERE id IN (
+                    SELECT id
+                    FROM (
+                        SELECT id
+                        FROM request
+                        WHERE status LIKE 'Đã hủy'
+                        ORDER BY id ASC
+                        LIMIT count_request_delete
+                    ) subquery
+                );
+            ELSE
+                DELETE FROM request
+                WHERE id IN (
+                    SELECT id
+                    FROM (
+                        (
+                            SELECT id
+                            FROM request
+                            WHERE status LIKE 'Đã hủy'
+                            ORDER BY id ASC
+                            LIMIT count_request_canceled
+                        )
+                        UNION
+                        (
+                            SELECT id
+                            FROM request
+                            WHERE status LIKE 'Hoàn thành'
+                            ORDER BY id ASC
+                            LIMIT (count_request_delete - count_request_canceled)
+                        )
+                    ) subquery
+                );
+            END IF;
+            max_existing_id := (SELECT MAX(id) FROM request);
+            IF max_existing_id IS NOT NULL THEN
+                new_id_counter := CAST(SUBSTRING(max_existing_id FROM 2) AS INTEGER);
+            END IF;
+            FOR temp_id IN
+                SELECT id
+                FROM request
+                WHERE id LIKE 'r%' AND id <> 'r9999'
+                ORDER BY id ASC
+            LOOP
+                new_id := 'r' || LPAD(counter::TEXT, 4, '0');
+                UPDATE request
+                SET id = new_id
+                WHERE id = temp_id;
+                counter := counter + 1;
+            END LOOP;
+            new_id := 'r' || LPAD(counter::TEXT, 4, '0');
+            UPDATE request
+            SET id = new_id
+            WHERE id = 'r9999';
+        END IF;
+        SELECT array_agg(id ORDER BY id) INTO new_ids
+        FROM request
+        WHERE id NOT LIKE 'r%';
+        NEW.id := new_ids;
+        RETURN NEW;
+    END;
+    $$;
+
+
+ALTER FUNCTION public.update_request() OWNER TO postgres;
+
+--
+-- TOC entry 240 (class 1255 OID 34713)
 -- Name: update_salary(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -104,7 +268,7 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- TOC entry 217 (class 1259 OID 17231)
+-- TOC entry 215 (class 1259 OID 34714)
 -- Name: account; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -119,7 +283,7 @@ CREATE TABLE public.account (
 ALTER TABLE public.account OWNER TO postgres;
 
 --
--- TOC entry 218 (class 1259 OID 17236)
+-- TOC entry 216 (class 1259 OID 34719)
 -- Name: account_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -135,8 +299,8 @@ CREATE SEQUENCE public.account_id_seq
 ALTER TABLE public.account_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3398 (class 0 OID 0)
--- Dependencies: 218
+-- TOC entry 3406 (class 0 OID 0)
+-- Dependencies: 216
 -- Name: account_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -144,7 +308,7 @@ ALTER SEQUENCE public.account_id_seq OWNED BY public.account.id;
 
 
 --
--- TOC entry 215 (class 1259 OID 17221)
+-- TOC entry 217 (class 1259 OID 34720)
 -- Name: car; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -161,7 +325,7 @@ CREATE TABLE public.car (
 ALTER TABLE public.car OWNER TO postgres;
 
 --
--- TOC entry 220 (class 1259 OID 17242)
+-- TOC entry 218 (class 1259 OID 34725)
 -- Name: driver; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -182,7 +346,7 @@ CREATE TABLE public.driver (
 ALTER TABLE public.driver OWNER TO postgres;
 
 --
--- TOC entry 224 (class 1259 OID 17383)
+-- TOC entry 219 (class 1259 OID 34730)
 -- Name: employee; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -202,7 +366,7 @@ CREATE TABLE public.employee (
 ALTER TABLE public.employee OWNER TO postgres;
 
 --
--- TOC entry 221 (class 1259 OID 17255)
+-- TOC entry 220 (class 1259 OID 34735)
 -- Name: log; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -218,7 +382,7 @@ CREATE TABLE public.log (
 ALTER TABLE public.log OWNER TO postgres;
 
 --
--- TOC entry 226 (class 1259 OID 17418)
+-- TOC entry 221 (class 1259 OID 34738)
 -- Name: log_log_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -234,8 +398,8 @@ CREATE SEQUENCE public.log_log_id_seq
 ALTER TABLE public.log_log_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3399 (class 0 OID 0)
--- Dependencies: 226
+-- TOC entry 3407 (class 0 OID 0)
+-- Dependencies: 221
 -- Name: log_log_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -243,7 +407,7 @@ ALTER SEQUENCE public.log_log_id_seq OWNED BY public.log.log_id;
 
 
 --
--- TOC entry 225 (class 1259 OID 17412)
+-- TOC entry 222 (class 1259 OID 34739)
 -- Name: request_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -258,7 +422,7 @@ CREATE SEQUENCE public.request_id_seq
 ALTER TABLE public.request_id_seq OWNER TO postgres;
 
 --
--- TOC entry 216 (class 1259 OID 17226)
+-- TOC entry 223 (class 1259 OID 34740)
 -- Name: request; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -280,7 +444,7 @@ CREATE TABLE public.request (
 ALTER TABLE public.request OWNER TO postgres;
 
 --
--- TOC entry 223 (class 1259 OID 17290)
+-- TOC entry 224 (class 1259 OID 34746)
 -- Name: requestview; Type: VIEW; Schema: public; Owner: postgres
 --
 
@@ -307,7 +471,7 @@ CREATE VIEW public.requestview AS
 ALTER TABLE public.requestview OWNER TO postgres;
 
 --
--- TOC entry 222 (class 1259 OID 17260)
+-- TOC entry 225 (class 1259 OID 34751)
 -- Name: salary; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -322,7 +486,7 @@ CREATE TABLE public.salary (
 ALTER TABLE public.salary OWNER TO postgres;
 
 --
--- TOC entry 219 (class 1259 OID 17237)
+-- TOC entry 226 (class 1259 OID 34756)
 -- Name: user_information; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -339,7 +503,7 @@ CREATE TABLE public.user_information (
 ALTER TABLE public.user_information OWNER TO postgres;
 
 --
--- TOC entry 3210 (class 2604 OID 17263)
+-- TOC entry 3212 (class 2604 OID 34761)
 -- Name: account id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -347,7 +511,7 @@ ALTER TABLE ONLY public.account ALTER COLUMN id SET DEFAULT nextval('public.acco
 
 
 --
--- TOC entry 3211 (class 2604 OID 17419)
+-- TOC entry 3213 (class 2604 OID 34762)
 -- Name: log log_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -355,8 +519,8 @@ ALTER TABLE ONLY public.log ALTER COLUMN log_id SET DEFAULT nextval('public.log_
 
 
 --
--- TOC entry 3382 (class 0 OID 17231)
--- Dependencies: 217
+-- TOC entry 3388 (class 0 OID 34714)
+-- Dependencies: 215
 -- Data for Name: account; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -369,8 +533,8 @@ INSERT INTO public.account (id, username, password, account_type) VALUES (19, 't
 
 
 --
--- TOC entry 3380 (class 0 OID 17221)
--- Dependencies: 215
+-- TOC entry 3390 (class 0 OID 34720)
+-- Dependencies: 217
 -- Data for Name: car; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -384,30 +548,30 @@ INSERT INTO public.car (id, license, brand, maintenance, seatnumber, driver_id) 
 
 
 --
--- TOC entry 3385 (class 0 OID 17242)
--- Dependencies: 220
+-- TOC entry 3391 (class 0 OID 34725)
+-- Dependencies: 218
 -- Data for Name: driver; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.driver (id, fullname, gender, email, phone_number, dob, cccd, address, car_id, status) VALUES (3, 'Phạm Thành Lập', 'Nam', 'phamthanhlap@gmail.com', '0915461657', '2003-02-07', '036203011139', 'Hoàng Mai, Hà Nội', 'c002', 'Không có đơn');
 INSERT INTO public.driver (id, fullname, gender, email, phone_number, dob, cccd, address, car_id, status) VALUES (17, 'Phạm Hoàng Long', 'Nam', 'long.1234@gmail.com', '0337725612', '2001-07-14', '036203011140', 'Hoàng Cầu, Đống Đa, Hà Nội', 'c006', 'Không có đơn');
+INSERT INTO public.driver (id, fullname, gender, email, phone_number, dob, cccd, address, car_id, status) VALUES (3, 'Phạm Thành Lập', 'Nam', 'phamthanhlap@gmail.com', '0915461657', '2003-02-07', '036203011139', 'Hoàng Mai, Hà Nội', 'c002', 'Không có đơn');
 
 
 --
--- TOC entry 3388 (class 0 OID 17383)
--- Dependencies: 224
+-- TOC entry 3392 (class 0 OID 34730)
+-- Dependencies: 219
 -- Data for Name: employee; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.employee (employee_id, fullname, gender, email, phone_number, dob, branch, address, cccd) VALUES ('nv0003', 'Phạm Thành Lập', 'Nam', 'phamthanhlap3@gmail.com', '0337726031', '2003-02-07', 'Nhân viên', 'Hà Đông, Hà Nội', '0362030111142');
 INSERT INTO public.employee (employee_id, fullname, gender, email, phone_number, dob, branch, address, cccd) VALUES ('nv0001', 'Phạm Thành Lập', 'Nam', 'phamthanhlap1@gmail.com', '0337726024', '2003-02-07', 'Marketing', 'Hoàng Mai, Hà Nội', '036203011140');
 INSERT INTO public.employee (employee_id, fullname, gender, email, phone_number, dob, branch, address, cccd) VALUES ('nv0002', 'Phạm Thành Lập', 'Nữ', 'phamthanhlap2@gmail.com', '0337726030', '2003-02-07', 'Bảo vệ', 'Cầu Giấy, Hà Nội', '036203011137');
 INSERT INTO public.employee (employee_id, fullname, gender, email, phone_number, dob, branch, address, cccd) VALUES ('nv0004', 'Phạm Thu Trang', 'Nam', 'thutrangpham@gmail.com', '0337726021', '2001-07-14', 'Tiếp tân', 'Trung Kính, Cầu Giấy, Hà Nội', '036201011125');
+INSERT INTO public.employee (employee_id, fullname, gender, email, phone_number, dob, branch, address, cccd) VALUES ('nv0003', 'Phạm Thành Lập', 'Nam', 'phamthanhlap3@gmail.com', '0337726031', '2003-02-07', 'Nhân viên', 'Hà Đông, Hà Nội', '036203011114');
 
 
 --
--- TOC entry 3386 (class 0 OID 17255)
--- Dependencies: 221
+-- TOC entry 3393 (class 0 OID 34735)
+-- Dependencies: 220
 -- Data for Name: log; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -470,8 +634,8 @@ INSERT INTO public.log ("time", date, id, action, log_id) VALUES ('10:31:23+07',
 
 
 --
--- TOC entry 3381 (class 0 OID 17226)
--- Dependencies: 216
+-- TOC entry 3396 (class 0 OID 34740)
+-- Dependencies: 223
 -- Data for Name: request; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -653,11 +817,12 @@ INSERT INTO public.request (id, "time", date, departure, arrival, price, custome
 INSERT INTO public.request (id, "time", date, departure, arrival, price, customer_id, driver_id, distance, status, car_id) VALUES ('r0187', '16:18:30', '2023-07-01', 'Hà Nội', 'Nam Định', 1266000, 1, 3, 84.39, 'Hoàn thành', 'c002');
 INSERT INTO public.request (id, "time", date, departure, arrival, price, customer_id, driver_id, distance, status, car_id) VALUES ('r0189', '17:35:59', '2023-07-01', 'Nam Định', 'Hà Nội', 1267000, 1, 3, 84.415, 'Hoàn thành', 'c002');
 INSERT INTO public.request (id, "time", date, departure, arrival, price, customer_id, driver_id, distance, status, car_id) VALUES ('r0190', '17:39:52', '2023-07-01', 'Nam Định', 'Hà Nội', 1267000, 1, 3, 84.415, 'Hoàn thành', 'c002');
+INSERT INTO public.request (id, "time", date, departure, arrival, price, customer_id, driver_id, distance, status, car_id) VALUES ('r0191', '23:57:09', '2023-07-10', 'Hà Nội', 'Nam Định', 1266000, 1, 3, 84.39, 'Đã hủy', 'c002');
 
 
 --
--- TOC entry 3387 (class 0 OID 17260)
--- Dependencies: 222
+-- TOC entry 3397 (class 0 OID 34751)
+-- Dependencies: 225
 -- Data for Name: salary; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -666,8 +831,8 @@ INSERT INTO public.salary (supplementary, salary, earning, date) VALUES (5063000
 
 
 --
--- TOC entry 3384 (class 0 OID 17237)
--- Dependencies: 219
+-- TOC entry 3398 (class 0 OID 34756)
+-- Dependencies: 226
 -- Data for Name: user_information; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -676,8 +841,8 @@ INSERT INTO public.user_information (id, fullname, gender, email, phone_number, 
 
 
 --
--- TOC entry 3400 (class 0 OID 0)
--- Dependencies: 218
+-- TOC entry 3408 (class 0 OID 0)
+-- Dependencies: 216
 -- Name: account_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -685,8 +850,8 @@ SELECT pg_catalog.setval('public.account_id_seq', 19, true);
 
 
 --
--- TOC entry 3401 (class 0 OID 0)
--- Dependencies: 226
+-- TOC entry 3409 (class 0 OID 0)
+-- Dependencies: 221
 -- Name: log_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -694,8 +859,8 @@ SELECT pg_catalog.setval('public.log_log_id_seq', 63, true);
 
 
 --
--- TOC entry 3402 (class 0 OID 0)
--- Dependencies: 225
+-- TOC entry 3410 (class 0 OID 0)
+-- Dependencies: 222
 -- Name: request_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -703,7 +868,7 @@ SELECT pg_catalog.setval('public.request_id_seq', 2, true);
 
 
 --
--- TOC entry 3213 (class 2606 OID 17265)
+-- TOC entry 3218 (class 2606 OID 34764)
 -- Name: car Car_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -712,7 +877,7 @@ ALTER TABLE ONLY public.car
 
 
 --
--- TOC entry 3215 (class 2606 OID 17267)
+-- TOC entry 3226 (class 2606 OID 34766)
 -- Name: request Request_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -721,7 +886,7 @@ ALTER TABLE ONLY public.request
 
 
 --
--- TOC entry 3217 (class 2606 OID 17269)
+-- TOC entry 3216 (class 2606 OID 34768)
 -- Name: account account_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -730,7 +895,7 @@ ALTER TABLE ONLY public.account
 
 
 --
--- TOC entry 3221 (class 2606 OID 17271)
+-- TOC entry 3220 (class 2606 OID 34770)
 -- Name: driver driver_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -739,7 +904,7 @@ ALTER TABLE ONLY public.driver
 
 
 --
--- TOC entry 3227 (class 2606 OID 17389)
+-- TOC entry 3222 (class 2606 OID 34772)
 -- Name: employee employee_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -748,7 +913,7 @@ ALTER TABLE ONLY public.employee
 
 
 --
--- TOC entry 3223 (class 2606 OID 17424)
+-- TOC entry 3224 (class 2606 OID 34774)
 -- Name: log log_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -757,7 +922,7 @@ ALTER TABLE ONLY public.log
 
 
 --
--- TOC entry 3225 (class 2606 OID 17391)
+-- TOC entry 3228 (class 2606 OID 34776)
 -- Name: salary salary_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -766,7 +931,7 @@ ALTER TABLE ONLY public.salary
 
 
 --
--- TOC entry 3219 (class 2606 OID 17277)
+-- TOC entry 3230 (class 2606 OID 34778)
 -- Name: user_information user_information_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -775,7 +940,39 @@ ALTER TABLE ONLY public.user_information
 
 
 --
--- TOC entry 3236 (class 2620 OID 25833)
+-- TOC entry 3239 (class 2620 OID 34827)
+-- Name: car car_trigger; Type: TRIGGER; Schema: public; Owner: postgres
+--
+
+CREATE TRIGGER car_trigger AFTER INSERT OR DELETE ON public.car FOR EACH ROW EXECUTE FUNCTION public.change_car();
+
+
+--
+-- TOC entry 3240 (class 2620 OID 34825)
+-- Name: employee employee_trigger; Type: TRIGGER; Schema: public; Owner: postgres
+--
+
+CREATE TRIGGER employee_trigger AFTER INSERT OR DELETE ON public.employee FOR EACH ROW EXECUTE FUNCTION public.change_employee();
+
+
+--
+-- TOC entry 3243 (class 2620 OID 34824)
+-- Name: salary employee_trigger; Type: TRIGGER; Schema: public; Owner: postgres
+--
+
+CREATE TRIGGER employee_trigger AFTER INSERT OR DELETE ON public.salary FOR EACH ROW EXECUTE FUNCTION public.change_employee();
+
+
+--
+-- TOC entry 3241 (class 2620 OID 34821)
+-- Name: request request_trigger; Type: TRIGGER; Schema: public; Owner: postgres
+--
+
+CREATE TRIGGER request_trigger AFTER INSERT ON public.request FOR EACH ROW EXECUTE FUNCTION public.update_request();
+
+
+--
+-- TOC entry 3242 (class 2620 OID 34779)
 -- Name: request salary_trigger; Type: TRIGGER; Schema: public; Owner: postgres
 --
 
@@ -783,7 +980,15 @@ CREATE TRIGGER salary_trigger AFTER INSERT ON public.request FOR EACH ROW EXECUT
 
 
 --
--- TOC entry 3228 (class 2606 OID 17430)
+-- TOC entry 3244 (class 2620 OID 34822)
+-- Name: salary salary_trigger; Type: TRIGGER; Schema: public; Owner: postgres
+--
+
+CREATE TRIGGER salary_trigger AFTER INSERT OR DELETE ON public.salary FOR EACH ROW EXECUTE FUNCTION public.update_salary();
+
+
+--
+-- TOC entry 3231 (class 2606 OID 34780)
 -- Name: car car_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -792,7 +997,7 @@ ALTER TABLE ONLY public.car
 
 
 --
--- TOC entry 3229 (class 2606 OID 17450)
+-- TOC entry 3235 (class 2606 OID 34785)
 -- Name: request car_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -801,7 +1006,7 @@ ALTER TABLE ONLY public.request
 
 
 --
--- TOC entry 3230 (class 2606 OID 17278)
+-- TOC entry 3236 (class 2606 OID 34790)
 -- Name: request customer_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -810,7 +1015,7 @@ ALTER TABLE ONLY public.request
 
 
 --
--- TOC entry 3233 (class 2606 OID 17440)
+-- TOC entry 3232 (class 2606 OID 34795)
 -- Name: driver driver_fkey_car; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -819,7 +1024,7 @@ ALTER TABLE ONLY public.driver
 
 
 --
--- TOC entry 3234 (class 2606 OID 17435)
+-- TOC entry 3233 (class 2606 OID 34800)
 -- Name: driver driver_fkey_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -828,7 +1033,7 @@ ALTER TABLE ONLY public.driver
 
 
 --
--- TOC entry 3231 (class 2606 OID 17445)
+-- TOC entry 3237 (class 2606 OID 34805)
 -- Name: request driver_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -837,7 +1042,7 @@ ALTER TABLE ONLY public.request
 
 
 --
--- TOC entry 3235 (class 2606 OID 17455)
+-- TOC entry 3234 (class 2606 OID 34810)
 -- Name: log fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -846,7 +1051,7 @@ ALTER TABLE ONLY public.log
 
 
 --
--- TOC entry 3232 (class 2606 OID 17425)
+-- TOC entry 3238 (class 2606 OID 34815)
 -- Name: user_information user_information_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -854,7 +1059,7 @@ ALTER TABLE ONLY public.user_information
     ADD CONSTRAINT user_information_fkey FOREIGN KEY (id) REFERENCES public.account(id) NOT VALID;
 
 
--- Completed on 2023-07-08 11:09:46
+-- Completed on 2023-07-11 00:06:41
 
 --
 -- PostgreSQL database dump complete

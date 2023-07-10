@@ -36,7 +36,7 @@ public class GetRequestDAO {
                     "LEFT JOIN user_information ON user_information.id = request.customer_id\n" +
                     "LEFT JOIN driver ON driver.id = request.driver_id\n" +
                     "LEFT JOIN car ON car.id = request.car_id\n" +
-                    "ORDER BY id DESC";
+                    "ORDER BY id DESC";                 //23
             PreparedStatement st = cnt.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while(rs.next()){
@@ -76,7 +76,7 @@ public class GetRequestDAO {
                 case 1: sql = "SELECT COUNT(*) FROM request WHERE status LIKE 'Hoàn thành'";break;
                 default: sql = "SELECT COUNT(*) FROM request WHERE status LIKE 'Đã hủy'";break;
             }
-            PreparedStatement st = cnt.prepareStatement(sql);
+            PreparedStatement st = cnt.prepareStatement(sql);       //24
             ResultSet rs = st.executeQuery();
             while(rs.next()) count = rs.getInt("count");
             JDBCUtil.closeConnection(cnt);

@@ -33,7 +33,7 @@ public class GetSalaryDAO {
         ArrayList<StatictisModel> result = new ArrayList<>();
         try{
             Connection cnt = JDBCUtil.getConnection();
-            String sql = "SELECT * FROM salary";
+            String sql = "SELECT * FROM salary";        //13
             PreparedStatement st = cnt.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while(rs.next()){

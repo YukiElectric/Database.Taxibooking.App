@@ -36,7 +36,7 @@ public class GetHistoryDAO implements DAOGetHistoryInterface<UserHistory>{
                     "FROM request\n" +
                     "JOIN driver ON request.driver_id = driver.id\n" +
                     "JOIN car ON driver.id = car.driver_id\n" +
-                    "WHERE request.customer_id = ? ORDER BY id DESC";
+                    "WHERE request.customer_id = ? ORDER BY id DESC";       //16
             PreparedStatement st = cnt.prepareStatement(sql);
             st.setInt(1,id);
             ResultSet rs = st.executeQuery();
@@ -86,7 +86,7 @@ public class GetHistoryDAO implements DAOGetHistoryInterface<UserHistory>{
             st.setInt(1,id);
             ResultSet rs = st.executeQuery();
             while (rs.next()){
-                result = rs.getInt("count");
+                result = rs.getInt("count");        //17
                 JDBCUtil.closeConnection(cnt);
                 return result;
             }
@@ -103,7 +103,7 @@ public class GetHistoryDAO implements DAOGetHistoryInterface<UserHistory>{
         try{
             Connection cnt = JDBCUtil.getConnection();
             String sql = "SELECT SUM(distance) FROM request \n" +
-                    "WHERE customer_id = ? AND status LIKE 'Hoàn thành'";
+                    "WHERE customer_id = ? AND status LIKE 'Hoàn thành'";       //18
             PreparedStatement st = cnt.prepareStatement(sql);
             st.setInt(1,id);
             ResultSet rs = st.executeQuery();

@@ -15,7 +15,7 @@ public class UserResetDAO extends ResetInterface{
     public int CheckEmail(String email) {
         try{
             Connection cnt = JDBCUtil.getConnection();
-            String sql = "SELECT id FROM user_information WHERE email = ? OR phone_number = ?";
+            String sql = "SELECT id FROM user_information WHERE email = ? OR phone_number = ?";     //27
             PreparedStatement st = cnt.prepareStatement(sql);
             st.setString(1,email);
             st.setString(2,email);
@@ -35,7 +35,7 @@ public class UserResetDAO extends ResetInterface{
     public boolean ResetPass(int ID, String password) {
         try {
             Connection cnt = JDBCUtil.getConnection();
-            String sql = "UPDATE account SET password = ? WHERE id = ? AND ? <> password";
+            String sql = "UPDATE account SET password = ? WHERE id = ? AND ? <> password";      //28
             PreparedStatement st = cnt.prepareStatement(sql);
             st.setString(1,password);
             st.setInt(2,ID);

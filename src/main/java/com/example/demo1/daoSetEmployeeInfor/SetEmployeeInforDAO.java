@@ -25,7 +25,7 @@ public class SetEmployeeInforDAO {
             int i = Integer.parseInt(result.substring(2)) + 1;
             result = "nv%04d".formatted(i);
             sql = "INSERT INTO employee(employee_id,fullname,gender,phone_number,email,dob,cccd,address,branch) VALUES ('"+result+"',?,?,?,?,?,?,?,?)";
-            st = cnt.prepareStatement(sql);
+            st = cnt.prepareStatement(sql);     //33
             st.setString(1,name);
             st.setString(2,gender);
             st.setString(3,phone);
@@ -50,7 +50,7 @@ public class SetEmployeeInforDAO {
         try {
             Connection cnt = JDBCUtil.getConnection();
             String sql = "UPDATE employee SET fullname = ?,gender = ?,phone_number = ?,email = ?,dob = ?,cccd = ?,address = ?,branch = ? WHERE employee_id LIKE '"+id+"'";
-            PreparedStatement st = cnt.prepareStatement(sql);
+            PreparedStatement st = cnt.prepareStatement(sql);       //34
             st.setString(1,name);
             st.setString(2,gender);
             st.setString(3,phone);
@@ -73,7 +73,7 @@ public class SetEmployeeInforDAO {
     public boolean checkEmployeeEmail(String email){
         try {
             Connection cnt = JDBCUtil.getConnection();
-            String sql = "SELECT * FROM employee WHERE email = ?";
+            String sql = "SELECT * FROM employee WHERE email = ?";      //35
             PreparedStatement st = cnt.prepareStatement(sql);
             st.setString(1, email);
             ResultSet rs = st.executeQuery();
@@ -90,7 +90,7 @@ public class SetEmployeeInforDAO {
     public boolean checkEmployeePhone(String phone){
         try {
             Connection cnt = JDBCUtil.getConnection();
-            String sql = "SELECT * FROM employee WHERE phone_number = ?";
+            String sql = "SELECT * FROM employee WHERE phone_number = ?";      //36
             PreparedStatement st = cnt.prepareStatement(sql);
             st.setString(1, phone);
             ResultSet rs = st.executeQuery();

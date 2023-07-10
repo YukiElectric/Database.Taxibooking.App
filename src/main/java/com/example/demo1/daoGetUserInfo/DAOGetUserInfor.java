@@ -18,7 +18,7 @@ public class DAOGetUserInfor implements GetUserInfoDAOInterface<UserInfo>{
         UserInfo result = null;
         try {
             Connection cnt = JDBCUtil.getConnection();
-            String sql = "SELECT * FROM user_information WHERE id = "+id;
+            String sql = "SELECT * FROM user_information WHERE id = "+id;       //21
             PreparedStatement st = cnt.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while(rs.next()){
@@ -41,7 +41,7 @@ public class DAOGetUserInfor implements GetUserInfoDAOInterface<UserInfo>{
         try{
             Connection cnt = JDBCUtil.getConnection();
             String sql = "UPDATE user_information SET fullname = ?, email = ?, phone_number = ?, dob = ? WHERE id = "+id;
-            PreparedStatement st = cnt.prepareStatement(sql);
+            PreparedStatement st = cnt.prepareStatement(sql);       //22
             st.setString(1,name);
             st.setString(2,email);
             st.setString(3,phone);

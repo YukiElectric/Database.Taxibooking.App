@@ -43,8 +43,9 @@ public class DAOGetAllUserInfor{
                     "JOIN user_information ON account.id = user_information.id\n" +
                     "LEFT JOIN request ON request.customer_id = account.id\n" +
                     "WHERE account.account_type LIKE 'user'\n" +
-                    "GROUP BY account.id, user_information.id";
-            PreparedStatement st = cnt.prepareStatement(sql);
+                    "GROUP BY account.id, user_information.id\n" +
+                    "ORDER BY account.id ASC";
+            PreparedStatement st = cnt.prepareStatement(sql);       //19
             ResultSet rs = st.executeQuery();
             while(rs.next()){
                 int id = rs.getInt("id");
@@ -82,7 +83,7 @@ public class DAOGetAllUserInfor{
                     "LEFT JOIN request ON request.driver_id = account.id\n" +
                     "WHERE account.account_type LIKE 'driver'\n" +
                     "GROUP BY account.id, driver.id,car.id, car.license, car.brand";
-            PreparedStatement st = cnt.prepareStatement(sql);
+            PreparedStatement st = cnt.prepareStatement(sql);       //20
             ResultSet rs = st.executeQuery();
             while(rs.next()){
                 int id = rs.getInt("id");
@@ -117,7 +118,7 @@ public class DAOGetAllUserInfor{
         ArrayList<AllEmployeeInfor> result = new ArrayList<>();
         try{
             Connection cnt = JDBCUtil.getConnection();
-            String sql = "SELECT * FROM employee ORDER BY employee_id ASC";
+            String sql = "SELECT * FROM employee ORDER BY employee_id ASC";         //21
             PreparedStatement st = cnt.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while(rs.next()){

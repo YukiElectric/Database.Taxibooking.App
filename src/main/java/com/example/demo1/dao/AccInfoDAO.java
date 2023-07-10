@@ -17,7 +17,7 @@ public class AccInfoDAO extends DAOInterface{
         int ID = 0;
         try {
             Connection cnt = JDBCUtil.getConnection();
-            String sql = "SELECT ID FROM account WHERE username = ?";
+            String sql = "SELECT ID FROM account WHERE username = ?"; //1
             PreparedStatement st = cnt.prepareStatement(sql);
             st.setString(1,user);
             ResultSet rs = st.executeQuery();
@@ -35,7 +35,7 @@ public class AccInfoDAO extends DAOInterface{
             int ID = AccInfoDAO.getInstance().CheckUser(user);
             if(ID!=0){
                 Connection cnt = JDBCUtil.getConnection();
-                String sql = "SELECT password FROM account WHERE ID ="+ID;
+                String sql = "SELECT password FROM account WHERE ID ="+ID; //2
                 PreparedStatement st = cnt.prepareStatement(sql);
                 ResultSet rs = st.executeQuery();
                 if(rs.next() && rs.getString("password").equals(password)){
@@ -56,7 +56,7 @@ public class AccInfoDAO extends DAOInterface{
         try {
             if(ID!=0){
                 Connection cnt = JDBCUtil.getConnection();
-                String sql = "SELECT account_type FROM account WHERE ID ="+ID;
+                String sql = "SELECT account_type FROM account WHERE ID ="+ID; //3
                 PreparedStatement st = cnt.prepareStatement(sql);
                 ResultSet rs = st.executeQuery();
                 if(rs.next()){
@@ -85,7 +85,7 @@ public class AccInfoDAO extends DAOInterface{
                 case 1: type_input = "driver";break;
                 default: type_input = "employee";break;
             }
-            String sql = "SELECT COUNT(*) FROM "+type_input;
+            String sql = "SELECT COUNT(*) FROM "+type_input; //4
             PreparedStatement st = cnt.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while(rs.next()) count = rs.getInt("count");

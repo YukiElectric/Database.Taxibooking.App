@@ -34,7 +34,7 @@ public class GetDriverHistoryDAO implements DAOGetHistoryInterface<DriverHistory
             String sql = "SELECT request.*, user_information.fullname AS customer_name, user_information.phone_number\n" +
                     "FROM request\n" +
                     "JOIN user_information ON request.customer_id = user_information.id\n" +
-                    "WHERE request.driver_id = ? ORDER BY id DESC";
+                    "WHERE request.driver_id = ? ORDER BY id DESC";     //14
             PreparedStatement st = cnt.prepareStatement(sql);
             st.setInt(1,id);
             ResultSet rs = st.executeQuery();
@@ -78,7 +78,7 @@ public class GetDriverHistoryDAO implements DAOGetHistoryInterface<DriverHistory
         try{
             Connection cnt = JDBCUtil.getConnection();
             String sql = "SELECT COUNT(id) FROM request WHERE driver_id = ? AND status LIKE 'Hoàn thành'";
-            PreparedStatement st = cnt.prepareStatement(sql);
+            PreparedStatement st = cnt.prepareStatement(sql);       //15
             st.setInt(1,id);
             ResultSet rs = st.executeQuery();
             while (rs.next()){

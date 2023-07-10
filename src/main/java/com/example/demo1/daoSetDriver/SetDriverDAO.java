@@ -16,7 +16,7 @@ public class SetDriverDAO {
         int id = 0;
         try {
             Connection cnt = JDBCUtil.getConnection();
-            String sql = "INSERT INTO account (username, password, account_type) VALUES (?,?,'driver')";
+            String sql = "INSERT INTO account (username, password, account_type) VALUES (?,?,'driver')";        //29
             PreparedStatement st = cnt.prepareStatement(sql);
             st.setString(1,user);
             st.setString(2,password);
@@ -41,7 +41,7 @@ public class SetDriverDAO {
         try {
             Connection cnt = JDBCUtil.getConnection();
             String sql = "INSERT INTO driver(id,fullname,gender,email,phone_number,dob,cccd,car_id,address,status) VALUES(?,?,?,?,?,?,?,?,?,'Không có đơn')";
-            PreparedStatement st = cnt.prepareStatement(sql);
+            PreparedStatement st = cnt.prepareStatement(sql);   //30
             st.setInt(1,id);
             st.setString(2,name);
             st.setString(3,gender);
@@ -72,7 +72,7 @@ public class SetDriverDAO {
         try {
             Connection cnt = JDBCUtil.getConnection();
             String sql = "UPDATE account SET username = ?, password = ? WHERE id = "+id;
-            PreparedStatement st = cnt.prepareStatement(sql);
+            PreparedStatement st = cnt.prepareStatement(sql);       //31
             st.setString(1,user);
             st.setString(2,password);
             int rs = st.executeUpdate();
@@ -91,7 +91,7 @@ public class SetDriverDAO {
         try {
             Connection cnt = JDBCUtil.getConnection();
             String sql = "UPDATE driver SET fullname = ?,gender = ?,email = ?,phone_number = ?,dob = ?,cccd = ?,address = ?,car_id =? WHERE id = "+id;
-            PreparedStatement st = cnt.prepareStatement(sql);
+            PreparedStatement st = cnt.prepareStatement(sql);   //32
             st.setString(1,name);
             st.setString(2,gender);
             st.setString(3,email);

@@ -44,7 +44,7 @@ public class GetCarInforDAO {
                 CarInfor temp = new CarInfor(id,license,brand,maintenance,seatnumber,driver_id,fullname,distance);
                 result.add(temp);
             }
-            JDBCUtil.closeConnection(cnt);
+            JDBCUtil.closeConnection(cnt);      //10
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -67,7 +67,7 @@ public class GetCarInforDAO {
             }
             PreparedStatement st = cnt.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
-            while(rs.next()) count = rs.getInt("count");
+            while(rs.next()) count = rs.getInt("count");        //11
             JDBCUtil.closeConnection(cnt);
         }catch (Exception e){
             e.printStackTrace();

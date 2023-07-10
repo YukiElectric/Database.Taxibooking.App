@@ -30,7 +30,7 @@ public class DeleteInforDAO extends DAODeleteInforInterface{
             sql = "INSERT INTO log(action,time,date,id) VALUES ('"+action+"','"+time+"','"+date+"','"+manager_id+"')";
             st = cnt.prepareStatement(sql);
             st.executeUpdate();
-            JDBCUtil.closeConnection(cnt);
+            JDBCUtil.closeConnection(cnt);          //5
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -58,7 +58,7 @@ public class DeleteInforDAO extends DAODeleteInforInterface{
             sql = "INSERT INTO log(action,time,date,id) VALUES ('"+action+"','"+time+"','"+date+"','"+manager_id+"')";
             st = cnt.prepareStatement(sql);
             st.executeUpdate();
-            JDBCUtil.closeConnection(cnt);
+            JDBCUtil.closeConnection(cnt);      //6
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -77,7 +77,7 @@ public class DeleteInforDAO extends DAODeleteInforInterface{
             sql = "INSERT INTO log(action,time,date,id) VALUES ('"+action+"','"+time+"','"+date+"','"+manager_id+"')";
             st = cnt.prepareStatement(sql);
             st.executeUpdate();
-            JDBCUtil.closeConnection(cnt);
+            JDBCUtil.closeConnection(cnt);      //7
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -99,7 +99,7 @@ public class DeleteInforDAO extends DAODeleteInforInterface{
             sql = "INSERT INTO log(action,time,date,id) VALUES ('"+action+"','"+time+"','"+date+"','"+manager_id+"')";
             st = cnt.prepareStatement(sql);
             st.executeUpdate();
-            JDBCUtil.closeConnection(cnt);
+            JDBCUtil.closeConnection(cnt);      //8
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -118,7 +118,7 @@ public class DeleteInforDAO extends DAODeleteInforInterface{
             sql = "INSERT INTO log(action,time,date,id) VALUES ('"+action+"','"+time+"','"+date+"','"+manager_id+"')";
             st = cnt.prepareStatement(sql);
             st.executeUpdate();
-            JDBCUtil.closeConnection(cnt);
+            JDBCUtil.closeConnection(cnt);      //9
         }catch (Exception e){
             e.printStackTrace();
         }

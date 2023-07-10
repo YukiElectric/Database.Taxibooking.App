@@ -18,7 +18,7 @@ public class GetDriverInforDAO implements DAOGetDriverInforInterface<DriverInfor
        DriverInfor result = null;
         try {
             Connection cnt = JDBCUtil.getConnection();
-            String sql = "SELECT * FROM driver WHERE id = "+id;
+            String sql = "SELECT * FROM driver WHERE id = "+id;     //12
             PreparedStatement st = cnt.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while(rs.next()){
