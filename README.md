@@ -2,39 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>MỤC LỤC</title>
-	<style>
-		h3 {
-			color: #2196F3;
-		}
-
-		hr {
-			border: none;
-			border-top: 1px solid #CCC;
-			margin: 20px 0;
-		}
-
-		ul {
-			list-style-type: none;
-			padding: 0;
-		}
-
-		li {
-			margin-bottom: 10px;
-		}
-
-		a {
-			color: #333;
-			text-decoration: none;
-		}
-
-		.material-icons {
-			display: inline-block;
-			width: 24px;
-			height: 24px;
-			vertical-align: middle;
-		}
-	</style>
+	
 </head>
 <body>
 	<h3>MỤC LỤC</h3>
